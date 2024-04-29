@@ -4,14 +4,13 @@ Version: 1.0.0
 Authors@R: c(
     person("Daniel A.", "Antiporta", , "antiportada@who.int", role = "aut",
            comment = c(ORCID = "0000-0002-5143-3776")),
-    person("Patricia", "Menéndez", , "patricia.menendez@unimelb.edu", role = "aut",
-           comment = c(ORCID = "0000-0003-0701-6315")),
+    person("Patricia", "Menéndez", , "patricia.menendez@unimelb.edu", 
+           role = "aut", comment = c(ORCID = "0000-0003-0701-6315")),
     person("Katherine", "Kirkby", , "kirkbyk@who.int", role = c("aut", "cre")),
     person("Ahmad", "Hosseinpoor", , "hosseinpoora@who.int", role = "aut"),
     person("World Health Organization", email = "heat@who.int", role = "cph")
   )
-Description: Functions for computing summary measures of health
-    inequality.
+Description: Functions for computing summary measures of health inequality.
 License: AGPL (>= 3)
 URL: https://github.com/WHOequity/healthequal
 BugReports: https://github.com/WHOequity/healthequal/issues
