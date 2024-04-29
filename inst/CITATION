@@ -5,6 +5,5 @@ bibentry(
               Ahmad Reza Hosseinpoor",
   year     = 2024,
   institution = "World Health Organization (WHO)",
-  note = "R package version 1.0.0",
-  url = "https://github.com/WHOequity/healthequal"
+  note = "R package version 1.0.0"
 )
