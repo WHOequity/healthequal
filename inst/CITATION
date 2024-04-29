@@ -1,8 +1,10 @@
 bibentry(
-  bibtype = "Misc",
+  bibtype = "Manual",
   title    = "healthequal: Calculating summary measures of inequality",
-  author   = "Daniel A. Antiporta, Patricia Menendez, Katherine Kirkby, and Ahmad Reza Hosseinpoor",
+  author   = "Daniel A. Antiporta, Patricia Menendez, Katherine Kirkby, and
+              Ahmad Reza Hosseinpoor",
   year     = 2024,
-  institution = "World Health Organization",
-  note = "R package version 1.0.0"
+  institution = "World Health Organization (WHO)",
+  note = "R package version 1.0.0",
+  url = "https://github.com/WHOequity/healthequal"
 )
