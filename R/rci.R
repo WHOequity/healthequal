@@ -48,11 +48,12 @@
 #' @param strata Strata (required if data come from a survey)
 #' @param fpc Finite population correction
 #' @param method Normalisation method for bounded indicators. Options available
-#'  Wagstaff (wagstaff) or Erreygers (erreygers).
-#' @param lmin Minimum limit for bounded indicators.
-#' @param lmax Maximum limit for bounded indicators.
+#'  Wagstaff (`wagstaff`) or Erreygers (`erreygers`) correction.
+#' @param lmin Theoretical minimum for bounded indicators.
+#' @param lmax Theoretical maximum for bounded indicators.
 #' @param conf.level confidence level of the interval.
-#' @param force Strata (required if data come from a survey)
+#' @param force TRUE/FALSE statement to force calculation with missing
+#' indicator estimate values.
 #' @param ...  Further arguments passed to or from other methods.
 #' @examples
 #' # example code

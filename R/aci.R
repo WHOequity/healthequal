@@ -43,7 +43,8 @@
 #' @param lmin Minimum limit for bounded indicators.
 #' @param lmax Maximum limit for bounded indicators.
 #' @param conf.level confidence level of the interval.
-#' @param force Strata (required if data come from a survey)
+#' @param force TRUE/FALSE statement to force calculation with missing
+#' indicator estimate values.
 #' @param ...  Further arguments passed to or from other methods.
 #' @examples
 #' # example code

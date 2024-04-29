@@ -43,7 +43,8 @@ survey)}
 
 \item{conf.level}{confidence level of the interval.}
 
-\item{force}{Strata (required if data come from a survey)}
+\item{force}{TRUE/FALSE statement to force calculation with missing
+indicator estimate values.}
 
 \item{...}{Further arguments passed to or from other methods.}
 }

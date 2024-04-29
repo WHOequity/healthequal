@@ -246,13 +246,18 @@ multiplemeasures$bgv
 
 Ahn J, Harper S, Yu M, Feuer EJ, Liu B, Luta G. Variance Estimation and Confidence Intervals for 11 Commonly Used Health Disparity Measures. JCO Clin Cancer Inform. 2018 Dec;2:1--19. <https://doi.org/10.1200/CCI.18.00031>
 
+Erreygers G. Correcting the Concentration Index. Journal of Health Economics. 
+2009;28:504–515. <https://doi.org/10.1016/j.jhealeco.2008.02.003>
+
 Harper S, Lynch J, Meersman SC, Breen N, Davis WW, Reichman ME. An overview of methods for monitoring social disparities in cancer with an example using trends in lung cancer incidence by area-socioeconomic position and race-ethnicity, 1992-2004. Am J Epidemiol. 2008;167(8):889-899. <https://doi.org/10.1093/aje/kwn016>
 
 Keppel K, Pamuk E, Lynch J, Carter-Pokras O, Kim I, Mays V, Pearcy J, Schoenbach V, Weissman JS. Methodological issues in measuring health disparities. Vital Health Stat. Ser. 2. 2005;141:1--16. <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3681823/>
 
-Moreno-Betancur M, Latouche A; Menvielle G, Kunst A, Rey G. Relative Index of Inequality and Slope Index of Inequality: A Structured Regression Framework for Estimation. Epidemiology. 2015;26(4). <https://doi.org/10.1097/EDE.0000000000000311>
+O'Donnell O, van Doorslaer E, Wagstaff A, Lindelow M. Analyzing Health Equity Using Household Survey Data: A Guide to Techniques and Their Implementation. World Bank Institute; Washington, D.C: 2008. <https://hdl.handle.net/10986/6896>
 
 Schlotheuber A, Hosseinpoor AR. Summary Measures of Health Inequality: A Review of Existing Measures and Their Application. Int J Environ Res Public Health. 2022 Mar 20;19(6):3697. <https://doi.org/10.3390/ijerph19063697>
+
+Wagstaff A. The bounds of the concentration index when the variable of interest is binary, with an application to immunization inequality. Health Economics. 2005;14:429–432. <https://doi.org/10.1002/hec.953>
 
 World Health Organization. Handbook on health inequality monitoring: with a special focus on low- and middle-income countries. Geneva: World Health Organization; 2013. <https://www.who.int/publications/i/item/9789241548632>
 

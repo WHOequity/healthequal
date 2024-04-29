@@ -44,15 +44,16 @@ survey)}
 \item{fpc}{Finite population correction}
 
 \item{method}{Normalisation method for bounded indicators. Options available
-Wagstaff (wagstaff) or Erreygers (erreygers).}
+Wagstaff (\code{wagstaff}) or Erreygers (\code{erreygers}) correction.}
 
-\item{lmin}{Minimum limit for bounded indicators.}
+\item{lmin}{Theoretical minimum for bounded indicators.}
 
-\item{lmax}{Maximum limit for bounded indicators.}
+\item{lmax}{Theoretical maximum for bounded indicators.}
 
 \item{conf.level}{confidence level of the interval.}
 
-\item{force}{Strata (required if data come from a survey)}
+\item{force}{TRUE/FALSE statement to force calculation with missing
+indicator estimate values.}
 
 \item{...}{Further arguments passed to or from other methods.}
 }
