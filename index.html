@@ -79,8 +79,11 @@
   <div class="contents col-md-9">
 
 
+<!-- badges: end -->
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 <div class="section level1">
-<div class="page-header"><h1 id="healthequal">healthequal<a class="anchor" aria-label="anchor" href="#healthequal"></a>
+<div class="page-header"><h1 id="healthequal-">healthequal <a href="https://github.com/WHOequity/healthequal/" class="external-link"></a>
+<a class="anchor" aria-label="anchor" href="#healthequal-"></a>
 </h1></div>
 <p>The healthequal R package provides computational tools for calculating summary measures of health inequality.</p>
 </div>
@@ -94,55 +97,69 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"WHO/helathequal"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level1">
-<h1 id="measures-of-health-inequality-included-in-healthequal">Measures of health inequality included in <code>healthequal</code>:<a class="anchor" aria-label="anchor" href="#measures-of-health-inequality-included-in-healthequal"></a>
-</h1>
+<div class="section level2">
+<h2 id="measures-of-health-inequality-included-in-healthequal">Measures of health inequality included in <code>healthequal</code>:<a class="anchor" aria-label="anchor" href="#measures-of-health-inequality-included-in-healthequal"></a>
+</h2>
 <p>The following summary measures of health inequality are included in the <code>healthequal</code> package:</p>
 <div class="section level3">
 <h3 id="simple-measures">Simple measures<a class="anchor" aria-label="anchor" href="#simple-measures"></a>
 </h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="sc">-</span>   <span class="fu">Difference</span> (<span class="st">`</span><span class="at">d</span><span class="st">`</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="sc">-</span>   <span class="fu">Ratio</span> (<span class="st">`</span><span class="at">r</span><span class="st">`</span>)</span></code></pre></div>
+<ul>
+<li>Difference (<code>d</code>)</li>
+<li>Ratio (<code>r</code>)</li>
+</ul>
 </div>
 <div class="section level3">
 <h3 id="disproportionality-measures-ordered-dimensions">Disproportionality measures (ordered dimensions)<a class="anchor" aria-label="anchor" href="#disproportionality-measures-ordered-dimensions"></a>
 </h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="sc">-</span>   Absolute concentration <span class="fu">index</span> (<span class="st">`</span><span class="at">aci</span><span class="st">`</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="sc">-</span>   Relative concentration <span class="fu">index</span> (<span class="st">`</span><span class="at">rci</span><span class="st">`</span>)</span></code></pre></div>
+<ul>
+<li>Absolute concentration index (<code>aci</code>)</li>
+<li>Relative concentration index (<code>rci</code>)</li>
+</ul>
 </div>
 <div class="section level3">
 <h3 id="regression-based-measures-ordered-dimensions">Regression-based measures (ordered dimensions)<a class="anchor" aria-label="anchor" href="#regression-based-measures-ordered-dimensions"></a>
 </h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="sc">-</span>   Slope index of <span class="fu">inequality</span> (<span class="st">`</span><span class="at">sii</span><span class="st">`</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="sc">-</span>   Relative index of <span class="fu">inequality</span> (<span class="st">`</span><span class="at">rii</span><span class="st">`</span>)</span></code></pre></div>
+<ul>
+<li>Slope index of inequality (<code>sii</code>)</li>
+<li>Relative index of inequality (<code>rii</code>)</li>
+</ul>
 </div>
 <div class="section level3">
 <h3 id="variance-measures-non-ordered-dimensions">Variance measures (non-ordered dimensions)<a class="anchor" aria-label="anchor" href="#variance-measures-non-ordered-dimensions"></a>
 </h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="sc">-</span>   Between<span class="sc">-</span>group <span class="fu">variance</span> (<span class="st">`</span><span class="at">bgv</span><span class="st">`</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="sc">-</span>   Between<span class="sc">-</span>group standard <span class="fu">deviation</span> (<span class="st">`</span><span class="at">bgsd</span><span class="st">`</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="sc">-</span>   Coefficient of <span class="fu">variation</span> (<span class="st">`</span><span class="at">covar</span><span class="st">`</span>)</span></code></pre></div>
+<ul>
+<li>Between-group variance (<code>bgv</code>)</li>
+<li>Between-group standard deviation (<code>bgsd</code>)</li>
+<li>Coefficient of variation (<code>covar</code>)</li>
+</ul>
 </div>
 <div class="section level3">
 <h3 id="mean-difference-measures-non-ordered-dimensions">Mean difference measures (non-ordered dimensions)<a class="anchor" aria-label="anchor" href="#mean-difference-measures-non-ordered-dimensions"></a>
 </h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="sc">-</span>   Mean difference from mean <span class="sc">-</span> unweighted and <span class="fu">weighted</span> (<span class="st">`</span><span class="at">mdmu</span><span class="st">`</span> and <span class="st">`</span><span class="at">mdmw</span><span class="st">`</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="sc">-</span>   Mean difference from best<span class="sc">-</span>performing subgroup <span class="sc">-</span> unweighted and <span class="fu">weighted</span> (<span class="st">`</span><span class="at">mdbu</span><span class="st">`</span> and <span class="st">`</span><span class="at">mdbw</span><span class="st">`</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="sc">-</span>   Mean difference from reference subgroup <span class="sc">-</span> unweighted and <span class="fu">weighted</span> (<span class="st">`</span><span class="at">mdru</span><span class="st">`</span> and <span class="st">`</span><span class="at">mdrw</span><span class="st">`</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="sc">-</span>   Index of disparity <span class="sc">-</span> unweighted and <span class="fu">weighted</span> (<span class="st">`</span><span class="at">idisu</span><span class="st">`</span> and <span class="st">`</span><span class="at">idisw</span><span class="st">`</span>)</span></code></pre></div>
+<ul>
+<li>Mean difference from mean - unweighted and weighted (<code>mdmu</code> and <code>mdmw</code>)</li>
+<li>Mean difference from best-performing subgroup - unweighted and weighted (<code>mdbu</code> and <code>mdbw</code>)</li>
+<li>Mean difference from reference subgroup - unweighted and weighted (<code>mdru</code> and <code>mdrw</code>)</li>
+<li>Index of disparity - unweighted and weighted (<code>idisu</code> and <code>idisw</code>)</li>
+</ul>
 </div>
 <div class="section level3">
 <h3 id="disproportionality-measures-non-ordered-dimensions">Disproportionality measures (non-ordered dimensions)<a class="anchor" aria-label="anchor" href="#disproportionality-measures-non-ordered-dimensions"></a>
 </h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="sc">-</span>   Theil <span class="fu">index</span> (<span class="st">`</span><span class="at">ti</span><span class="st">`</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="sc">-</span>   Mean log <span class="fu">deviation</span> (<span class="st">`</span><span class="at">mld</span><span class="st">`</span>)</span></code></pre></div>
+<ul>
+<li>Theil index (<code>ti</code>)</li>
+<li>Mean log deviation (<code>mld</code>)</li>
+</ul>
 </div>
 <div class="section level3">
 <h3 id="impact-measures">Impact measures<a class="anchor" aria-label="anchor" href="#impact-measures"></a>
 </h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="sc">-</span>   Population attributable <span class="fu">risk</span> (<span class="st">`</span><span class="at">parisk</span><span class="st">`</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="sc">-</span>   Population attributable <span class="fu">fraction</span> (<span class="st">`</span><span class="at">paf</span><span class="st">`</span>)</span></code></pre></div>
+<ul>
+<li>Population attributable risk (<code>parisk</code>)</li>
+<li>Population attributable fraction (<code>paf</code>)</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="section level1">
@@ -152,10 +169,10 @@
 <div class="section level3">
 <h3 id="ordered-and-nonordered-data">Ordered and Nonordered data<a class="anchor" aria-label="anchor" href="#ordered-and-nonordered-data"></a>
 </h3>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">OrderedSample</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">OrderedSample</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">NonorderedSample</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">NonorderedSample</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -163,10 +180,10 @@
 <h3 id="disagregated-data">Disagregated data<a class="anchor" aria-label="anchor" href="#disagregated-data"></a>
 </h3>
 <p>The <code>OrderedSampleMultipleind</code> and <code>OrderedSampleMultipleind</code> data contain disaggregated data by economic status and subnational region, respectively, for two indicators.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">OrderedSampleMultipleind</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">OrderedSampleMultipleind</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">NonorderedSampleMultipleind</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">NonorderedSampleMultipleind</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -174,7 +191,7 @@
 <h3 id="more-info-on-the-datasets">More info on the datasets<a class="anchor" aria-label="anchor" href="#more-info-on-the-datasets"></a>
 </h3>
 <p>For information about the datasets, type the following commands, which will display the corresponding dataset help file:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="fu">healthequal</span><span class="fu">::</span><span class="va"><a href="reference/OrderedSample.html">OrderedSample</a></span></span>
 <span><span class="op">?</span><span class="fu">healthequal</span><span class="fu">::</span><span class="va"><a href="reference/NonorderedSample.html">NonorderedSample</a></span></span>
 <span><span class="op">?</span><span class="fu">healthequal</span><span class="fu">::</span><span class="va"><a href="reference/OrderedSampleMultipleind.html">OrderedSampleMultipleind</a></span></span>
