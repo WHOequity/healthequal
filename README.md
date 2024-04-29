@@ -1,5 +1,9 @@
 # healthequal
 
+<!-- badges: start -->
+  [![R-CMD-check](https://github.com/WHOequity/healthequal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WHOequity/healthequal/actions/workflows/R-CMD-check.yaml)
+  <!-- badges: end -->
+
 The healthequal R package provides computational tools for calculating summary measures of health inequality.
 
 # Installation
