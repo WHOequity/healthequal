@@ -2,6 +2,10 @@
 output: github_document
 ---
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/WHOequity/healthequal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WHOequity/healthequal/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
@@ -16,11 +20,6 @@ library(healthequal)
 ```
 
 # healthequal <a href='https://github.com/WHOequity/healthequal/'>
-
-<!-- badges: start -->
-  [![R-CMD-check](https://github.com/WHOequity/healthequal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WHOequity/healthequal/actions/workflows/R-CMD-check.yaml)
-[![R-CMD-check](https://github.com/WHOequity/healthequal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WHOequity/healthequal/actions/workflows/R-CMD-check.yaml)
-<!-- badges: end -->
 
 
 The healthequal R package provides computational tools for calculating summary measures of health inequality.
@@ -40,7 +39,7 @@ The development version can be installed from [GitHub](https://github.com/) with
 remotes::install_github("WHO/helathequal")
 ```
 
-# Measures of health inequality included in `healthequal`:
+## Measures of health inequality included in `healthequal`:
 
 The following summary measures of health inequality are included in the `healthequal` package:
 
