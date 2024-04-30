@@ -5,7 +5,7 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/healthequal)](https://CRAN.R-project.org/package=healthequal)
 [![Project Status:
-Concept](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
+Concept](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#active)
 [![License: AGPL (\>=
 3)](https://img.shields.io/badge/License-AGPL%20%28%3E%3D%203%29-blue.svg)](https://choosealicense.com/licenses/agpl-3.0/)
 <!-- badges: end -->
