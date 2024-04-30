@@ -9,7 +9,11 @@ bslib:
 reference:
 - title: "Package data"
   contents:
-  - data
+  - IndividualSample
+  - NonorderedSample
+  - OrderedSample
+  - OrderedSampleMultipleind
+  - NonorderedSampleMultipleind
 
 - title: "Summary measures for ordered dimensions"
   contents:
@@ -38,5 +42,5 @@ reference:
 
 - title: "Summary measures for both ordered and non-ordered dimensions"
   contents:
-  - par
+  - parisk
   - paf
