@@ -1,4 +1,42 @@
 url: https://whoequity.github.io/healthequal/
 template:
   bootstrap: 5
+bslib:
+    base_font: {google: "Roboto"}
+    heading_font: {google: "Roboto Slab"}
+    code_font: {google: "JetBrains Mono"}
 
+reference:
+- title: "Package data"
+  contents:
+  - data
+
+- title: "Summary measures for ordered dimensions"
+  contents:
+  - aci
+  - rci
+  - sii
+  - rii
+
+- title: "Summary measures for non-ordered dimensions"
+  contents:
+  - bgv
+  - bgsd
+  - covar
+  - d
+  - idisu
+  - idisw
+  - mdbu
+  - mdbw
+  - mdmu
+  - mdmw
+  - mdru
+  - mdrw
+  - mld
+  - r
+  - ti
+
+- title: "Summary measures for both ordered and non-ordered dimensions"
+  contents:
+  - par
+  - paf
