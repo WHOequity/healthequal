@@ -1,3 +1,11 @@
+# Create Hex Sticker
+library(showtext)
+library(hexSticker)
+
+## Loading Google fonts (http://www.google.com/fonts)
+font_add_google("Inconsolata", "incon")
+## Automatically use showtext to render text for future devices
+showtext_auto()
 
 sticker(
   # Subplot (image)
@@ -16,15 +24,15 @@ sticker(
   p_fontface = "bold",
   # Spotlight
   spotlight = TRUE,                 # Enables spotlight
-  l_y=0.55,                          # Position of spotlight (y)
+  l_y=0.6,                          # Position of spotlight (y)
   l_x=1.03,                          # Position of spotlight (x)
   l_width = 10,
-  l_height = 4,
+  l_height = 3,
   l_alpha = 0.9,
   # Sticker colors
-  h_size = 1,
+  h_size = 1.2,
   h_fill = "#f5f5f5",               # Color for background
-  h_color = "#008dc9",              # Color for border
+  h_color = "#008dc9",              # Color for borders
   # Resolution
   dpi=1200,                         # Sets DPI
   # Save
