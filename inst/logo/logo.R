@@ -36,5 +36,5 @@ sticker(
   # Resolution
   dpi=1200,                         # Sets DPI
   # Save
-  filename="inst/figures/sticker.png"               # Sets file name and location where to store the sticker
+  filename="inst/logo/logo.png"               # Sets file name and location where to store the sticker
 )
