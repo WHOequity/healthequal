@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# healthequal\<href=“<https://whoequity.github.io/healthequal/>”\> <img src="man/figures/logo.png" align="right" height="139" alt="healthequal website">
+# healthequal <img src="man/figures/logo.png" align="right" height="139" alt="healthequal website">
 
 <!-- badges: start -->
 
