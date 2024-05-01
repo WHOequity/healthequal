@@ -6,15 +6,17 @@ Authors@R: c(
            comment = c(ORCID = "0000-0002-5143-3776")),
     person("Patricia", "Menéndez", , "patricia.menendez@unimelb.edu", role = "aut",
            comment = c(ORCID = "0000-0003-0701-6315")),
-    person("Katherine", "Kirkby", , "kirkbyk@who.int", role = c("aut", "cre")),
-    person("Ahmad", "Hosseinpoor", , "hosseinpoora@who.int", role = "aut"),
-    person("World Health Organization", , , "heat@who.int", role = "cph")
+    person("Katherine", "Kirkby", , "kirkbyk@who.int", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-6881-409X")),
+    person("Ahmad", "Hosseinpoor", , "hosseinpoora@who.int", role = "aut",
+           comment = c(ORCID = "0000-0001-7322-672X")),
+    person("World Health Organization", , , "inequality_monitoring@who.int", role = "cph")
   )
 Description: Compute 21 summary measures of health inequality and its
     corresponding confidence intervals for ordered and non-ordered
-    dimensions using disaggregated (grouped) data. Measures for ordered
-    dimensions (i.e., Slope Index of Inequality) also accept individual
-    and survey data.
+    dimensions using disaggregated data. Measures for ordered dimensions
+    (e.g., Slope Index of Inequality, Absolute Concentration Index) also
+    accept individual and survey data.
 License: AGPL (>= 3)
 URL: https://github.com/WHOequity/healthequal,
     https://whoequity.github.io/healthequal/
