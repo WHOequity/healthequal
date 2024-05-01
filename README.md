@@ -5,13 +5,13 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/WHOequity/healthequal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WHOequity/healthequal/actions/workflows/R-CMD-check.yaml)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/healthequal)](https://CRAN.R-project.org/package=healthequal)
 [![Project Status:
 Concept](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![License: AGPL (\>=
 3)](https://img.shields.io/badge/License-AGPL%20%28%3E%3D%203%29-blue.svg)](https://choosealicense.com/licenses/agpl-3.0/)
+[![R-CMD-check](https://github.com/WHOequity/healthequal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WHOequity/healthequal/actions/workflows/R-CMD-check.yaml)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/healthequal)](https://CRAN.R-project.org/package=healthequal)
 <!-- badges: end -->
 
 The healthequal R package provides computational tools for calculating
