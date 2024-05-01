@@ -1,5 +1,5 @@
 ---
-title: "*healthequal*: Calculating summary measures of inequality"
+title: "healthequal: Calculating summary measures of inequality"
 output:
   bookdown::html_document2:
     toc: yes

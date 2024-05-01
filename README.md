@@ -1,4 +1,8 @@
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# healthequal\<href=“<https://whoequity.github.io/healthequal/>”\> <img src="man/figures/logo.png" align="right" height="139" alt="healthequal website">
+
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/WHOequity/healthequal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/WHOequity/healthequal/actions/workflows/R-CMD-check.yaml)
@@ -9,10 +13,6 @@ Concept](https://www.repostatus.org/badges/latest/active.svg)](https://www.repos
 [![License: AGPL (\>=
 3)](https://img.shields.io/badge/License-AGPL%20%28%3E%3D%203%29-blue.svg)](https://choosealicense.com/licenses/agpl-3.0/)
 <!-- badges: end -->
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# healthequal <a href="https://whoequity.github.io/healthequal/"><img src="man/figures/logo.png" align="right" height="139" alt="healthequal website" /></a>
 
 The healthequal R package provides computational tools for calculating
 summary measures of health inequality.
