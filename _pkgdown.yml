@@ -1,19 +1,30 @@
 url: https://whoequity.github.io/healthequal/
+
 template:
   bootstrap: 5
-bslib:
+  bootswatch: cosmo
+  bslib:
     base_font: {google: "Roboto"}
     heading_font: {google: "Roboto Slab"}
     code_font: {google: "JetBrains Mono"}
 
+navbar:
+  type: default
+  left:
+    - icon: fa-home fa-lg
+      href: index.html
+    - text: News
+      href: news/index.html
+    - text: Reference
+      href: reference/index.html
+    - text: Introduction
+      href: articles/healthequal-package-demo.html
+
 reference:
-- title: "Package data"
+- title: "Summary measures for both ordered and non-ordered dimensions"
   contents:
-  - IndividualSample
-  - NonorderedSample
-  - OrderedSample
-  - OrderedSampleMultipleind
-  - NonorderedSampleMultipleind
+  - parisk
+  - paf
 
 - title: "Summary measures for ordered dimensions"
   contents:
@@ -40,7 +51,10 @@ reference:
   - r
   - ti
 
-- title: "Summary measures for both ordered and non-ordered dimensions"
+- title: "Package data"
   contents:
-  - parisk
-  - paf
+  - IndividualSample
+  - NonorderedSample
+  - OrderedSample
+  - OrderedSampleMultipleind
+  - NonorderedSampleMultipleind
