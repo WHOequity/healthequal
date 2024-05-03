@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# healthequal - Calculating summary measures of inequality <img src="man/figures/logo.png" align="right" height="200" alt="healthequal website">
+# healthequal - Calculating summary measures of inequality <img src="man/figures/logo.png" align="right" height="140" alt="healthequal website">
 
 <!-- badges: start -->
 
