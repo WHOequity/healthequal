@@ -60,7 +60,7 @@
 #' @export
 #'
 d <- function(est,
-              se,
+              se = NULL,
               favourable_indicator,
               ordered_dimension = NULL,
               subgroup_order = NULL,
@@ -81,8 +81,8 @@ d <- function(est,
   }
   ## Warning
   if(any(is.na(se)) | is.null(se))
-  warning("Standard errors contain missing values, confidence
-                             intervals might not be computed.")
+  warning("Standard errors are missing in all or some subgroups, confidence
+  intervals will not be computed.")
 
   # Identify reference subgroup
   y2_ref <- NA
@@ -100,14 +100,9 @@ d <- function(est,
   }
   if (sum(ordered_dimension, na.rm = TRUE) == 0) { #For Non-ordered dimensions
     if (sum(reference_subgroup, na.rm = TRUE) == 0) {
-          y2_ref[((est ==  max(est, na.rm = TRUE) &
-                     favourable_indicator[1] == 0) |
-                    (est == min(est, na.rm = TRUE) &
-                       favourable_indicator[1] == 1))] <- 1
-          y1_ref[((est ==  min(est, na.rm = TRUE) &
-                       favourable_indicator[1] == 0) |
-                      (est == max(est, na.rm = TRUE) &
-                         favourable_indicator[1] == 1))] <- 1
+          y2_ref[(est ==  min(est, na.rm = TRUE) &
+                     favourable_indicator[1] == 0)] <- 1
+          y1_ref[(est ==  max(est, na.rm = TRUE))] <- 1
   } else {
     y2_ref[((reference_subgroup ==1 &
                favourable_indicator[1] == 0) |
