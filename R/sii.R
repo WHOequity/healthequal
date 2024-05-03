@@ -303,7 +303,7 @@ sii <- function(est,
   # Return data frame
   return(data.frame(measure = "sii",
                     estimate = sii * scale,
-                    se = se.formula * scale,
+                    se = se.formula,
                     lowerci = lowerci * scale,
                     upperci = upperci * scale)
   )
