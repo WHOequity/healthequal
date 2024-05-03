@@ -82,8 +82,8 @@ mld <- function(pop,
 
   ## Warning
   if(any(is.na(se)) | is.null(se))
-  warning("Standard errors contain missing values, confidence
-                             intervals will not be computed.")
+    warning("Standard errors are missing in all or some subgroups, confidence
+  intervals will not be computed.")
 
   # Calculate summary measure
 

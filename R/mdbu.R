@@ -86,7 +86,7 @@ mdbu <- function(est,
   ## Warning
   if(any(is.na(se)) | is.null(se))
     warning("Standard errors are missing in all or some subgroups, confidence
-            intervals will not be computed.")
+  intervals will not be computed.")
 
   # Calculate summary measure
 
