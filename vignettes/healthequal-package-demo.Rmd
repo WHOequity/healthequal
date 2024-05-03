@@ -11,7 +11,7 @@ date: "`r format(Sys.time(), '%B, %Y')`"
 author: "Daniel A. Antiporta, Patricia Menéndez, Katherine Kirkby, Ahmad Hosseinpoor"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{Sending Messages With Gmailr}
+  %\VignetteIndexEntry{Introduction}
   %\usepackage[utf8]{inputenc}
 ---
 
@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE,
                       comment = "",
                       collapse = FALSE,
                       class.source = "bg-success",
-                      class.output="bg-warning"
+                      class.output = "bg-warning"
                       )
 ```
 
@@ -97,26 +97,26 @@ require(dplyr)
 
 The `healthequal` package comes with sample data for users to be able to test the package functions. The `OrderedSample` and `NonorderedSample` data contain data disaggregated by economic status and subnational region, respectively, for a single indicator.
 
-```{r class.source="bg-success"}
+```{r}
 data(OrderedSample)
-head(OrderedSample)
+head(OrderedSample, n = 4)
 ```
 
-```{r class.source="bg-success"}
+```{r}
 data(NonorderedSample)
-head(NonorderedSample)
+head(NonorderedSample, n = 4)
 ```
 
 The `OrderedSampleMultipleind` and `OrderedSampleMultipleind` data contain disaggregated data by economic status and subnational region, respectively, for two indicators.
 
 ```{r}
 data(OrderedSampleMultipleind)
-head(OrderedSampleMultipleind)
+head(OrderedSampleMultipleind, n = 4)
 ```
 
 ```{r}
 data(NonorderedSampleMultipleind)
-head(NonorderedSampleMultipleind)
+head(NonorderedSampleMultipleind, n = 4)
 ```
 
 For information about the datasets, type the following commands, which will display the corresponding dataset help file:
@@ -198,7 +198,7 @@ The previous examples showed the calculation of a single measure of inequality f
 The data can be inspected as follows:
 
 ```{r}
-head(NonorderedSampleMultipleind)
+head(NonorderedSampleMultipleind, n = 4)
 unique(NonorderedSampleMultipleind$indicator)
 ```
 
@@ -233,8 +233,6 @@ multiplemeasures <- NonorderedSampleMultipleind %>%
                     se = se   
                     )
             ) 
-  
-multiplemeasures
 
 # It is possible to extract the measures separetly
 multiplemeasures$covar
