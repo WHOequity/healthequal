@@ -6,7 +6,7 @@
 \usage{
 d(
   est,
-  se,
+  se = NULL,
   favourable_indicator,
   ordered_dimension = NULL,
   subgroup_order = NULL,
