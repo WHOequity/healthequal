@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# healthequal <img src="man/figures/logo.png" align="right" height="139" alt="healthequal website">
+# healthequal - Calculating summary measures of inequality <img src="man/figures/logo.png" align="right" height="200" alt="healthequal website">
 
 <!-- badges: start -->
 
@@ -14,8 +14,8 @@ Concept](https://www.repostatus.org/badges/latest/active.svg)](https://www.repos
 status](https://www.r-pkg.org/badges/version/healthequal)](https://CRAN.R-project.org/package=healthequal)
 <!-- badges: end -->
 
-The healthequal R package provides computational tools for calculating
-summary measures of health inequality.
+The `healthequal` package provides computational tools for calculating
+21 summary measures of health inequality.
 
 # Installation
 
