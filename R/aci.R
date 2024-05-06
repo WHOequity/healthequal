@@ -12,8 +12,12 @@
 #'  The calculation of ACI is based on a ranking of the whole population from
 #'  the most-disadvantaged subgroup (at rank 0) to the most-advantaged subgroup
 #'  (at rank 1), which is inferred from the ranking and size of the subgroups.
-#'  For more information on this inequality measure see Schlotheuber, A., &
-#'  Hosseinpoor, A. R. (2022) below.
+#'  ACI can be calculated as twice the covariance between the health indicator
+#'  and the relative rank. Given the relationship between covariance and
+#'  ordinary least squares regression, ACI can be obtained from a
+#'  regression of a transformation of the health variable of interest on the
+#'  relative rank. For more information on this inequality measure see
+#'  Schlotheuber, A., & Hosseinpoor, A. R. (2022) below.
 #'
 #'  **Interpretation:** The larger the absolute value of ACI, the higher the
 #'  level of inequality. For favourable indicators, positive values indicate
@@ -30,19 +34,25 @@
 #'
 #'  **Warning:** The confidence intervals are approximate
 #'  and might be biased.
-#' @param est The subgroup estimate. Estimates must be
-#'  available for all subgroups.
-#' @param subgroup_order The order of subgroups in an increasing sequence.
-#' @param pop The number of people within each subgroup.
+#'
+#' @param est The indicator estimate.
+#'  Estimates must be available for all subgroups/individuals
+#'  (unless force=TRUE).
+#' @param subgroup_order The order of subgroups/individuals in an increasing
+#' sequence.
+#' @param pop The number of people within each subgroup (for disaggregated data).
 #'  Population size must be available for all subgroups.
 #' @param weight Individual sampling weight (required if data come from a
-#' survey)
+#' survey).
 #' @param psu Primary sampling unit (required if data come from a survey)
 #' @param strata Strata (required if data come from a survey)
-#' @param fpc Finite population correction
-#' @param lmin Minimum limit for bounded indicators.
-#' @param lmax Maximum limit for bounded indicators.
-#' @param conf.level confidence level of the interval.
+#' @param fpc Finite population correction (if data come from a survey and
+#' sample size is large relative to population size).
+#' @param lmin Minimum limit for bounded indicators
+#' (i.e., variables that have a finite upper and/or lower limit).
+#' @param lmax Maximum limit for bounded indicators
+#' (i.e., variables that have a finite upper and/or lower limit).
+#' @param conf.level Confidence level of the interval. Default is 0.95 (95%).
 #' @param force TRUE/FALSE statement to force calculation with missing
 #' indicator estimate values.
 #' @param ...  Further arguments passed to or from other methods.

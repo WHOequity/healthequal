@@ -26,7 +26,7 @@
 #'  **Applicability:** Non-ordered; more than two subgroups
 #'
 #' @param est The subgroup estimate.
-#'  Estimates must be available for all subgroups.
+#'  Estimates must be available for at least 85% of subgroups, unless force=TRUE.
 #' @param se The standard error of the subgroup estimate.
 #'  If this is missing, 95% confidence intervals of MDRU cannot be calculated.
 #' @param scaleval The scale of the indicator. For example, the
@@ -34,9 +34,10 @@
 #'  scale of an indicator measured as a rate per 1000 population is 1000.
 #' @param reference_subgroup Identifies a reference subgroup with the value of
 #'  1.
-#' @param sim The number of simulations to estimate 95% confidence intervals
+#' @param sim The number of simulations to estimate 95% confidence intervals.
+#' Default is 100.
 #' @param seed The random number generator (RNG) state for the 95% confidence
-#'  interval simulation
+#'  interval simulation. Default is 123456.
 #' @param ... Further arguments passed to or from other methods.
 #' @examples
 #' # example code

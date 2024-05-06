@@ -42,7 +42,7 @@
 #' @param ordered_dimension Records whether the dimension is ordered (1)
 #'  or not (0).
 #' @param subgroup_order The order of subgroups in an increasing sequence,
-#'  if the dimension is ordered.
+#'  if the dimension is ordered (ordered dimension=1).
 #' @param favourable_indicator Records whether the indicator is
 #'  favourable (1) or non-favourable (0). Favourable indicators measure
 #'  desirable health events where the ultimate goal is
@@ -57,7 +57,7 @@
 #' be unique for each setting, year, indicator combination.
 #' If population is not specified for all subgroups, the setting average is
 #' used.
-#' @param conf.level confidence level of the interval.
+#' @param conf.level Confidence level of the interval. Default is 0.95 (95%).
 #' @param ...  Further arguments passed to or from other methods.
 #' @examples
 #' # example code
@@ -77,9 +77,9 @@
 #'  measures and their application. International Journal of
 #'  Environmental Research and Public Health, 19 (6), 3697.
 #'
-#' @references Walter, Stephen D. 1978. “Calculation of Attributable
+#' @references Walter, S. D. (1978). “Calculation of Attributable
 #' Risks from Epidemiological Data.” International Journal of Epidemiology
-#' 7 (2): 175–82. https://doi.org/10.1093/IJE/7.2.175.
+#' 7 (2): 175–82.
 #'
 #' @return The estimated PAF value, corresponding estimated standard error,
 #'  and confidence interval as a `data.frame`.

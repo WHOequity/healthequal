@@ -43,10 +43,12 @@
 #'  **Warning:** The confidence intervals are approximate
 #'  and might be biased.
 #'
-#' @param est The subgroup estimate.
-#'  Estimates must be available for all subgroups.
-#' @param subgroup_order The order of subgroups in an increasing sequence.
-#' @param pop The number of people within each subgroup.
+#' @param est The indicator estimate.
+#'  Estimates must be available for all subgroups/individuals
+#'  (unless force=TRUE).
+#' @param subgroup_order The order of subgroups/individuals in an increasing
+#' sequence.
+#' @param pop The number of people within each subgroup (for disaggregated data).
 #'  Population size must be available for all subgroups.
 #' @param scaleval The scale of the indicator. For example, the
 #'  scale of an indicator measured as a percentage is 100. The
@@ -55,8 +57,9 @@
 #' survey)
 #' @param psu Primary sampling unit (required if data come from a survey)
 #' @param strata Strata (required if data come from a survey)
-#' @param fpc Finite population correction
-#' @param conf.level confidence level of the interval.
+#' @param fpc Finite population correction (if data come from a survey and
+#' sample size is large relative to population size).
+#' @param conf.level Confidence level of the interval. Default is 0.95 (95%).
 #' @param linear TRUE/FALSE statement to specify the use of a linear
 #' regression model for RII estimation (default is logistic regression)
 #' @param force TRUE/FALSE statement to force calculation with missing

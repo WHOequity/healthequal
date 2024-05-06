@@ -20,16 +20,16 @@
 #'  **Applicability:** Non-ordered; more than two subgroups
 #'
 #'  **Warning:** The confidence intervals are approximate
-#'  and might be biased. See Ahn J. et al. (1978) below for
+#'  and might be biased. See Ahn J. et al. (2018) below for
 #'  further information on the standard error formula.
 #'
 #' @param pop The number of people within each subgroup.
 #'  Population size must be available for all subgroups.
 #' @param est The subgroup estimate. Estimates must be
-#'  available for all subgroups.
+#'  available for at least 85% of subgroups, unless force=TRUE.
 #' @param se The standard error of the subgroup estimate.
-#'  If this is missing, 95% confidence intervals of MLD cannot be calculated.
-#' @param conf.level confidence level of the interval.
+#'  If this is missing, confidence intervals of MLD cannot be calculated.
+#' @param conf.level Confidence level of the interval. Default is 0.95 (95%).
 #' @param ...  Further arguments passed to or from other methods.
 #' @examples
 #' # example code
@@ -46,10 +46,9 @@
 #'  measures and their application. International Journal of
 #'  Environmental Research and Public Health, 19 (6), 3697.
 #'
-#' @references Ahn J, Harper S, Yu M, Feuer EJ, Liu B, Luta G. Variance
-#'  Estimation and Confidence Intervals for 11 Commonly Used
-#'  Health Disparity Measures. JCO Clin Cancer Inform. 2018
-#'  Dec;2:1--19.
+#' @references Ahn J, Harper S, Yu M, Feuer EJ, Liu B, Luta G. (2018).
+#' Variance Estimation and Confidence Intervals for 11 Commonly Used
+#'  Health Disparity Measures. JCO Clin Cancer Inform. Dec;2:1--19.
 #'
 #' @return The estimated MLD value, corresponding estimated standard error,
 #'  and confidence interval as a `data.frame`.

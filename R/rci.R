@@ -8,14 +8,15 @@
 #'  according to their population share, while individuals are weighted by
 #'  sample weight in the case of data from surveys.
 #'
-#'  RCI is calculated by dividing the absolute concentration index (ACI)
-#'  by the setting average. RCI may be more easily interpreted
-#'  when multiplied by 100. The calculation of ACI is based on a
-#'  ranking of the whole population from the most-disadvantaged
-#'  subgroup (at rank 0) to the most-advantaged subgroup (at rank 1),
-#'  which is inferred from the ranking and size of the subgroups.
-#'  For more information on this inequality measure see
-#'  Schlotheuber, A., & Hosseinpoor, A. R. (2022) below.
+#'  The calculation of RCI is based on a ranking of the whole population from
+#'  the most-disadvantaged subgroup (at rank 0) to the most-advantaged subgroup
+#'  (at rank 1), which is inferred from the ranking and size of the subgroups.
+#'  RCI can be calculated as twice the covariance between the health indicator
+#'  and the relative rank, divided by the indicator mean. Given the relationship
+#'  between covariance and ordinary least squares regression, RCI can be
+#'  obtained from a regression of a transformation of the health variable of
+#'  interest on the relative rank. For more information on this inequality
+#'  measure see Schlotheuber, A., & Hosseinpoor, A. R. (2022) below.
 #'
 #'  **Interpretation:** RCI is bounded between -1 and +1 (or between -100
 #'  and +100, when multiplied by 100). The larger the absolute value of RCI,
@@ -34,24 +35,29 @@
 #'  **Warning:** The confidence intervals are approximate
 #'  and might be biased.
 #'
-#' @param est The subgroup estimate. Estimates must be
-#'  available for all subgroups.
-#' @param subgroup_order The order of subgroups in an increasing sequence.
+#' @param est The indicator estimate.
+#'  Estimates must be available for all subgroups/individuals
+#'  (unless force=TRUE).
+#' @param subgroup_order The order of subgroups/individuals in an increasing
+#' sequence.
 #' @param scaleval The scale of the indicator. For example, the
 #'  scale of an indicator measured as a percentage is 100. The
 #'  scale of an indicator measured as a rate per 1000 population is 1000.
-#' @param pop The number of people within each subgroup.
+#' @param pop The number of people within each subgroup (for disaggregated data).
 #'  Population size must be available for all subgroups.
 #' @param weight Individual sampling weight (required if data come from a
 #' survey)
 #' @param psu Primary sampling unit (required if data come from a survey)
 #' @param strata Strata (required if data come from a survey)
-#' @param fpc Finite population correction
+#' @param fpc Finite population correction (if data come from a survey and
+#' sample size is large relative to population size).
 #' @param method Normalisation method for bounded indicators. Options available
 #'  Wagstaff (`wagstaff`) or Erreygers (`erreygers`) correction.
-#' @param lmin Theoretical minimum for bounded indicators.
-#' @param lmax Theoretical maximum for bounded indicators.
-#' @param conf.level confidence level of the interval.
+#' @param lmin Minimum limit for bounded indicators
+#' (i.e., variables that have a finite upper and/or lower limit).
+#' @param lmax Maximum limit for bounded indicators
+#' (i.e., variables that have a finite upper and/or lower limit).
+#' @param conf.level Confidence level of the interval. Default is 0.95 (95%).
 #' @param force TRUE/FALSE statement to force calculation with missing
 #' indicator estimate values.
 #' @param ...  Further arguments passed to or from other methods.
@@ -71,6 +77,15 @@
 #' Summary measures of health inequality: A review of existing
 #'  measures and their application. International Journal of
 #'  Environmental Research and Public Health, 19 (6), 3697.
+#'
+#' @references Wagstaff A. (2005).
+#' The bounds of the concentration index when the variable of
+#' interest is binary, with an application to immunization
+#' inequality. Health Economics, 14:429–432.
+#'
+#' @references Erreygers G. (2009).
+#' Correcting the Concentration Index. Journal of Health Economics,
+#' 28:504–515.
 #'
 #' @return The estimated RCI value, corresponding estimated standard error,
 #'  and confidence interval as a `data.frame`.
