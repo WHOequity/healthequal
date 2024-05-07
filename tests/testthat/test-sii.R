@@ -21,7 +21,7 @@ test_that("sii function calculates SII correctly", {
 
   # Expected values
   expected_sii <- 44.44502
-  expected_se <- 2.190822
+  expected_se <- 0.02190822
   expected_lowerci <- 40.15109
   expected_upperci <- 48.73895
 

@@ -250,7 +250,7 @@
       se.formula <- lnriie$std.error
       cilevel <- 1 - ((1 - conf.level) / 2)
       ci <- list(l = est_rii - se.formula * qnorm(cilevel),
-                 u = est_rii - se.formula * qnorm(cilevel))
+                 u = est_rii + se.formula * qnorm(cilevel))
 
     } else{ #For survey
       tids <- if(is.null(psu)) {
