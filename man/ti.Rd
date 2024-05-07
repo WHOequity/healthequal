@@ -11,12 +11,12 @@ ti(pop, est, se = NULL, conf.level = 0.95, ...)
 Population size must be available for all subgroups.}
 
 \item{est}{The subgroup estimate. Estimates must be
-available for all subgroups.}
+available for at least 85\% of subgroups.}
 
 \item{se}{The standard error of the subgroup estimate.
-If this is missing, 95\% confidence intervals of TI cannot be calculated.}
+If this is missing, confidence intervals of TI cannot be calculated.}
 
-\item{conf.level}{confidence level of the interval.}
+\item{conf.level}{Confidence level of the interval. Default is 0.95 (95\%).}
 
 \item{...}{Further arguments passed to or from other methods.}
 }
@@ -47,7 +47,8 @@ logarithm).
 \strong{Applicability:} Non-ordered; more than two subgroups
 
 \strong{Warning:} The confidence intervals are approximate
-and might be biased.
+and might be biased. See Ahn J. et al. (2018) below for
+further information on the standard error formula.
 }
 \examples{
 # example code
@@ -66,8 +67,7 @@ Summary measures of health inequality: A review of existing
 measures and their application. International Journal of
 Environmental Research and Public Health, 19 (6), 3697.
 
-Ahn J, Harper S, Yu M, Feuer EJ, Liu B, Luta G. Variance
-Estimation and Confidence Intervals for 11 Commonly Used
-Health Disparity Measures. JCO Clin Cancer Inform. 2018
-Dec;2:1--19.
+Ahn J, Harper S, Yu M, Feuer EJ, Liu B, Luta G. (2018).
+Variance Estimation and Confidence Intervals for 11 Commonly Used
+Health Disparity Measures. JCO Clin Cancer Inform. Dec;2:1--19.
 }

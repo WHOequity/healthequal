@@ -28,7 +28,7 @@
 #' @param pop The number of people within each subgroup.
 #'  Population size must be available for all subgroups.
 #' @param est The subgroup estimate. Estimates must be
-#'  available at least 85% of subgroups, unless force=TRUE.
+#'  available at least 85% of subgroups.
 #' @param se The standard error of the subgroup estimate.
 #'  If this is missing, confidence intervals of BGV cannot be calculated.
 #' @param conf.level Confidence level of the interval. Default is 0.95 (95%).

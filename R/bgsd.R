@@ -27,7 +27,7 @@
 #' @param pop The number of people within each subgroup.
 #'  Population size must be available for all subgroups.
 #' @param est The subgroup estimate. Estimates must be
-#'  available for at least 85% of subgroups, unless force=TRUE.
+#'  available for at least 85% of subgroups.
 #' @param se The standard error of the subgroup estimate.
 #'  If this is missing, 95% confidence intervals of BGSD cannot be calculated.
 #' @param scaleval The scale of the indicator. For example, the

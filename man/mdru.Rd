@@ -16,7 +16,7 @@ mdru(
 }
 \arguments{
 \item{est}{The subgroup estimate.
-Estimates must be available for all subgroups.}
+Estimates must be available for at least 85\% of subgroups.}
 
 \item{se}{The standard error of the subgroup estimate.
 If this is missing, 95\% confidence intervals of MDRU cannot be calculated.}
@@ -28,10 +28,11 @@ scale of an indicator measured as a rate per 1000 population is 1000.}
 \item{reference_subgroup}{Identifies a reference subgroup with the value of
 1.}
 
-\item{sim}{The number of simulations to estimate 95\% confidence intervals}
+\item{sim}{The number of simulations to estimate 95\% confidence intervals.
+Default is 100.}
 
 \item{seed}{The random number generator (RNG) state for the 95\% confidence
-interval simulation}
+interval simulation. Default is 123456.}
 
 \item{...}{Further arguments passed to or from other methods.}
 }
