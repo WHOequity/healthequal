@@ -5,6 +5,7 @@
 * Fix `d` to run without declared standard errors (`se`).
 * Fix `d` and `r` to return positive results and ≥1 for data with non-ordered dimensions without reference group, respectively.
 * Fix scale of the reported `se` for SII.
+* Allow `conf.level` for SII and RII with aggregated data.
 
 # healthequal 1.0.0 
 
