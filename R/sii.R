@@ -254,8 +254,9 @@ sii <- function(est,
 
     # Calculate 95% confidence intervals
     se.formula <- siie$std.error
-    lowerci <- sii - se.formula * qnorm(0.975)
-    upperci <- sii + se.formula * qnorm(0.975)
+    cilevel <- 1-((1-conf.level)/2)
+    lowerci <- sii - se.formula * qnorm(cilevel)
+    upperci <- sii + se.formula * qnorm(cilevel)
 
   } else{ #For survey
     tids <- if(is.null(psu)) {

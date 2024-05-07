@@ -20,12 +20,14 @@ sii(
 )
 }
 \arguments{
-\item{est}{The subgroup estimate.
-Estimates must be available for all subgroups.}
+\item{est}{The indicator estimate.
+Estimates must be available for all subgroups/individuals
+(unless force=TRUE).}
 
-\item{subgroup_order}{The order of subgroups in an increasing sequence.}
+\item{subgroup_order}{The order of subgroups/individuals in an increasing
+sequence.}
 
-\item{pop}{The number of people within each subgroup.
+\item{pop}{The number of people within each subgroup (for disaggregated data).
 Population size must be available for all subgroups.}
 
 \item{scaleval}{The scale of the indicator. For example, the
@@ -39,12 +41,13 @@ survey)}
 
 \item{strata}{Strata (required if data come from a survey)}
 
-\item{fpc}{Finite population correction}
+\item{fpc}{Finite population correction (if data come from a survey and
+sample size is large relative to population size).}
 
-\item{conf.level}{confidence level of the interval.}
+\item{conf.level}{Confidence level of the interval. Default is 0.95 (95\%).}
 
 \item{linear}{TRUE/FALSE statement to specify the use of a linear
-regression model for SII estimation (default is logistic regression)}
+regression model for SII estimation (default is logistic regression).}
 
 \item{force}{TRUE/FALSE statement to force calculation with missing
 indicator estimate values.}

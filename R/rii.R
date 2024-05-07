@@ -248,7 +248,9 @@
                                                  vcov = "HC1")
       est_rii <- lnriie$estimate
       se.formula <- lnriie$std.error
-      ci <- list(l = lnriie$conf.low, u = lnriie$conf.high)
+      cilevel <- 1 - ((1 - conf.level) / 2)
+      ci <- list(l = est_rii - se.formula * qnorm(cilevel),
+                 u = est_rii - se.formula * qnorm(cilevel))
 
     } else{ #For survey
       tids <- if(is.null(psu)) {
