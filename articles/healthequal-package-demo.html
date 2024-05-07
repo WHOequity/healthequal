@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="healthequal">
-<title>*healthequal*: Calculating summary measures of inequality • healthequal</title>
+<title>healthequal: Calculating summary measures of inequality • healthequal</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -15,9 +15,12 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.9/font.css" rel="stylesheet">
+<link href="../deps/JetBrains_Mono-0.4.9/font.css" rel="stylesheet">
+<link href="../deps/Roboto_Slab-0.4.9/font.css" rel="stylesheet">
+<!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="*healthequal*: Calculating summary measures of inequality">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="healthequal: Calculating summary measures of inequality">
 <meta property="og:description" content="healthequal">
 <meta property="og:image" content="https://whoequity.github.io/healthequal/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -29,11 +32,11 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light" data-bs-theme="light"><div class="container">
+    <nav class="navbar fixed-top navbar-default navbar-expand-lg bg-primary" data-bs-theme="default"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">healthequal</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,16 +46,19 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
-<li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/healthequal-package-demo.html">*healthequal*: Calculating summary measures of inequality</a>
-  </div>
+  <a class="nav-link" href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
+  <a class="nav-link" href="../news/index.html">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">Reference</a>
+</li>
+<li class="active nav-item">
+  <a class="nav-link" href="../articles/healthequal-package-demo.html">Introduction</a>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
@@ -78,7 +84,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>*healthequal*: Calculating summary measures of inequality</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>healthequal: Calculating summary measures of inequality</h1>
                         <h4 data-toc-skip class="author">Daniel A.
 Antiporta, Patricia Menéndez, Katherine Kirkby, Ahmad Hosseinpoor</h4>
             
@@ -246,94 +252,90 @@ economic status and subnational region, respectively, for a single
 indicator.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">OrderedSample</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">OrderedSample</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">OrderedSample</span>, n <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
 <pre class="bg-warning"><code>                                        indicator
 1 Births attended by skilled health personnel (%)
 2 Births attended by skilled health personnel (%)
 3 Births attended by skilled health personnel (%)
 4 Births attended by skilled health personnel (%)
-5 Births attended by skilled health personnel (%)
                           dimension             subgroup subgroup_order
 1 Economic status (wealth quintile) Quintile 1 (poorest)              1
 2 Economic status (wealth quintile)           Quintile 2              2
 3 Economic status (wealth quintile)           Quintile 3              3
 4 Economic status (wealth quintile)           Quintile 4              4
-5 Economic status (wealth quintile) Quintile 5 (richest)              5
   estimate        se population setting_average favourable_indicator
 1 75.60530 1.5996131   2072.436        91.59669                    1
 2 91.01997 1.1351504   2112.204        91.59669                    1
 3 96.03959 0.6461946   1983.059        91.59669                    1
 4 97.04223 0.5676206   2052.124        91.59669                    1
-5 99.22405 0.2237683   1884.510        91.59669                    1
   ordered_dimension indicator_scale
 1                 1             100
 2                 1             100
 3                 1             100
-4                 1             100
-5                 1             100</code></pre>
+4                 1             100</code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">NonorderedSample</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">NonorderedSample</span><span class="op">)</span></span></code></pre></div>
-<pre class="bg-warning"><code> [38;5;246m# A tibble: 6 × 11 [39m
-  indicator         dimension subgroup estimate    se population setting_average
-   [3m [38;5;246m&lt;chr&gt; [39m [23m              [3m [38;5;246m&lt;chr&gt; [39m [23m      [3m [38;5;246m&lt;chr&gt; [39m [23m        [3m [38;5;246m&lt;dbl&gt; [39m [23m  [3m [38;5;246m&lt;dbl&gt; [39m [23m       [3m [38;5;246m&lt;dbl&gt; [39m [23m            [3m [38;5;246m&lt;dbl&gt; [39m [23m
- [38;5;250m1 [39m Births attended … Subnatio… aceh         95.1 1.54       230.             91.6
- [38;5;250m2 [39m Births attended … Subnatio… bali        100   0          149.             91.6
- [38;5;250m3 [39m Births attended … Subnatio… bangka …     97.4 1.27        55.7            91.6
- [38;5;250m4 [39m Births attended … Subnatio… banten       80.4 3.54       451.             91.6
- [38;5;250m5 [39m Births attended … Subnatio… bengkulu     94.3 2.77        70.2            91.6
- [38;5;250m6 [39m Births attended … Subnatio… central…     98.6 0.648      [4m1 [24m222.             91.6
- [38;5;246m# ℹ 4 more variables: favourable_indicator &lt;dbl&gt;, ordered_dimension &lt;dbl&gt;, [39m
- [38;5;246m#   indicator_scale &lt;dbl&gt;, reference_subgroup &lt;dbl&gt; [39m</code></pre>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">NonorderedSample</span>, n <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
+<pre class="bg-warning"><code>                                        indicator          dimension
+1 Births attended by skilled health personnel (%) Subnational region
+2 Births attended by skilled health personnel (%) Subnational region
+3 Births attended by skilled health personnel (%) Subnational region
+4 Births attended by skilled health personnel (%) Subnational region
+         subgroup  estimate       se population setting_average
+1            aceh  95.11784 1.538443  230.20508        91.59669
+2            bali 100.00000 0.000000  149.46272        91.59669
+3 bangka balitung  97.41001 1.267644   55.66533        91.59669
+4          banten  80.35694 3.544053  451.26550        91.59669
+  favourable_indicator ordered_dimension indicator_scale reference_subgroup
+1                    1                 0             100                  1
+2                    1                 0             100                  0
+3                    1                 0             100                  0
+4                    1                 0             100                  0</code></pre>
 <p>The <code>OrderedSampleMultipleind</code> and
 <code>OrderedSampleMultipleind</code> data contain disaggregated data by
 economic status and subnational region, respectively, for two
 indicators.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">OrderedSampleMultipleind</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">OrderedSampleMultipleind</span><span class="op">)</span></span></code></pre></div>
-<pre class="bg-warning"><code>                                                indicator
-1         Births attended by skilled health personnel (%)
-2         Births attended by skilled health personnel (%)
-3         Births attended by skilled health personnel (%)
-4         Births attended by skilled health personnel (%)
-5         Births attended by skilled health personnel (%)
-6 Under-five mortality rate (deaths per 1000 live births)
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">OrderedSampleMultipleind</span>, n <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
+<pre class="bg-warning"><code>                                        indicator
+1 Births attended by skilled health personnel (%)
+2 Births attended by skilled health personnel (%)
+3 Births attended by skilled health personnel (%)
+4 Births attended by skilled health personnel (%)
                           dimension             subgroup subgroup_order
 1 Economic status (wealth quintile) Quintile 1 (poorest)              1
 2 Economic status (wealth quintile)           Quintile 2              2
 3 Economic status (wealth quintile)           Quintile 3              3
 4 Economic status (wealth quintile)           Quintile 4              4
-5 Economic status (wealth quintile) Quintile 5 (richest)              5
-6 Economic status (wealth quintile) Quintile 1 (poorest)              1
   estimate        se population setting_average favourable_indicator
 1 75.60530 1.5996131   2072.436        91.59669                    1
 2 91.01997 1.1351504   2112.204        91.59669                    1
 3 96.03959 0.6461946   1983.059        91.59669                    1
 4 97.04223 0.5676206   2052.124        91.59669                    1
-5 99.22405 0.2237683   1884.510        91.59669                    1
-6 52.46997 3.1404064   7119.732       340.38391                    0
   ordered_dimension indicator_scale
 1                 1             100
 2                 1             100
 3                 1             100
-4                 1             100
-5                 1             100
-6                 1            1000</code></pre>
+4                 1             100</code></pre>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">NonorderedSampleMultipleind</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">NonorderedSampleMultipleind</span><span class="op">)</span></span></code></pre></div>
-<pre class="bg-warning"><code> [38;5;246m# A tibble: 6 × 11 [39m
-  indicator         dimension subgroup estimate    se population setting_average
-   [3m [38;5;246m&lt;chr&gt; [39m [23m              [3m [38;5;246m&lt;chr&gt; [39m [23m      [3m [38;5;246m&lt;chr&gt; [39m [23m        [3m [38;5;246m&lt;dbl&gt; [39m [23m  [3m [38;5;246m&lt;dbl&gt; [39m [23m       [3m [38;5;246m&lt;dbl&gt; [39m [23m            [3m [38;5;246m&lt;dbl&gt; [39m [23m
- [38;5;250m1 [39m Births attended … Subnatio… aceh         95.1 1.54       230.             91.6
- [38;5;250m2 [39m Births attended … Subnatio… bali        100   0          149.             91.6
- [38;5;250m3 [39m Births attended … Subnatio… bangka …     97.4 1.27        55.7            91.6
- [38;5;250m4 [39m Births attended … Subnatio… banten       80.4 3.54       451.             91.6
- [38;5;250m5 [39m Births attended … Subnatio… bengkulu     94.3 2.77        70.2            91.6
- [38;5;250m6 [39m Births attended … Subnatio… central…     98.6 0.648      [4m1 [24m222.             91.6
- [38;5;246m# ℹ 4 more variables: favourable_indicator &lt;dbl&gt;, ordered_dimension &lt;dbl&gt;, [39m
- [38;5;246m#   indicator_scale &lt;dbl&gt;, reference_subgroup &lt;dbl&gt; [39m</code></pre>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">NonorderedSampleMultipleind</span>, n <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
+<pre class="bg-warning"><code>                                        indicator          dimension
+1 Births attended by skilled health personnel (%) Subnational region
+2 Births attended by skilled health personnel (%) Subnational region
+3 Births attended by skilled health personnel (%) Subnational region
+4 Births attended by skilled health personnel (%) Subnational region
+         subgroup  estimate       se population setting_average
+1            aceh  95.11784 1.538443  230.20508        91.59669
+2            bali 100.00000 0.000000  149.46272        91.59669
+3 bangka balitung  97.41001 1.267644   55.66533        91.59669
+4          banten  80.35694 3.544053  451.26550        91.59669
+  favourable_indicator ordered_dimension indicator_scale reference_subgroup
+1                    1                 0             100                  1
+2                    1                 0             100                  0
+3                    1                 0             100                  0
+4                    1                 0             100                  0</code></pre>
 <p>For information about the datasets, type the following commands,
 which will display the corresponding dataset help file:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -449,18 +451,22 @@ indicators:</p>
 </ul>
 <p>The data can be inspected as follows:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">NonorderedSampleMultipleind</span><span class="op">)</span></span></code></pre></div>
-<pre class="bg-warning"><code> [38;5;246m# A tibble: 6 × 11 [39m
-  indicator         dimension subgroup estimate    se population setting_average
-   [3m [38;5;246m&lt;chr&gt; [39m [23m              [3m [38;5;246m&lt;chr&gt; [39m [23m      [3m [38;5;246m&lt;chr&gt; [39m [23m        [3m [38;5;246m&lt;dbl&gt; [39m [23m  [3m [38;5;246m&lt;dbl&gt; [39m [23m       [3m [38;5;246m&lt;dbl&gt; [39m [23m            [3m [38;5;246m&lt;dbl&gt; [39m [23m
- [38;5;250m1 [39m Births attended … Subnatio… aceh         95.1 1.54       230.             91.6
- [38;5;250m2 [39m Births attended … Subnatio… bali        100   0          149.             91.6
- [38;5;250m3 [39m Births attended … Subnatio… bangka …     97.4 1.27        55.7            91.6
- [38;5;250m4 [39m Births attended … Subnatio… banten       80.4 3.54       451.             91.6
- [38;5;250m5 [39m Births attended … Subnatio… bengkulu     94.3 2.77        70.2            91.6
- [38;5;250m6 [39m Births attended … Subnatio… central…     98.6 0.648      [4m1 [24m222.             91.6
- [38;5;246m# ℹ 4 more variables: favourable_indicator &lt;dbl&gt;, ordered_dimension &lt;dbl&gt;, [39m
- [38;5;246m#   indicator_scale &lt;dbl&gt;, reference_subgroup &lt;dbl&gt; [39m</code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">NonorderedSampleMultipleind</span>, n <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
+<pre class="bg-warning"><code>                                        indicator          dimension
+1 Births attended by skilled health personnel (%) Subnational region
+2 Births attended by skilled health personnel (%) Subnational region
+3 Births attended by skilled health personnel (%) Subnational region
+4 Births attended by skilled health personnel (%) Subnational region
+         subgroup  estimate       se population setting_average
+1            aceh  95.11784 1.538443  230.20508        91.59669
+2            bali 100.00000 0.000000  149.46272        91.59669
+3 bangka balitung  97.41001 1.267644   55.66533        91.59669
+4          banten  80.35694 3.544053  451.26550        91.59669
+  favourable_indicator ordered_dimension indicator_scale reference_subgroup
+1                    1                 0             100                  1
+2                    1                 0             100                  0
+3                    1                 0             100                  0
+4                    1                 0             100                  0</code></pre>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">NonorderedSampleMultipleind</span><span class="op">$</span><span class="va">indicator</span><span class="op">)</span></span></code></pre></div>
 <pre class="bg-warning"><code>[1] "Births attended by skilled health personnel (%)"        
@@ -504,23 +510,13 @@ below COV and BGV) for multiple dimensions.</p>
 <span>                    se <span class="op">=</span> <span class="va">se</span>   </span>
 <span>                    <span class="op">)</span></span>
 <span>            <span class="op">)</span> </span>
-<span>  </span>
-<span><span class="va">multiplemeasures</span></span></code></pre></div>
-<pre class="bg-warning"><code> [38;5;246m# A tibble: 2 × 4 [39m
- [38;5;246m# Groups:   indicator [2] [39m
-  indicator                                  dimension covar$measure bgv$measure
-   [3m [38;5;246m&lt;chr&gt; [39m [23m                                       [3m [38;5;246m&lt;chr&gt; [39m [23m      [3m [38;5;246m&lt;chr&gt; [39m [23m          [3m [38;5;246m&lt;chr&gt; [39m [23m      
- [38;5;250m1 [39m Births attended by skilled health personn… Subnatio… cov           bgv        
- [38;5;250m2 [39m Under-five mortality rate (deaths per 100… Subnatio… cov           bgv        
- [38;5;246m# ℹ 7 more variables: covar$estimate &lt;dbl&gt;, $lowerci &lt;lgl&gt;, $upperci &lt;lgl&gt;, [39m
- [38;5;246m#   bgv$estimate &lt;dbl&gt;, $se &lt;dbl&gt;, $lowerci &lt;dbl&gt;, $upperci &lt;dbl&gt; [39m</code></pre>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># It is possible to extract the measures separetly</span></span>
+<span></span>
+<span><span class="co"># It is possible to extract the measures separetly</span></span>
 <span><span class="va">multiplemeasures</span><span class="op">$</span><span class="va">covar</span></span></code></pre></div>
 <pre class="bg-warning"><code>  measure  estimate lowerci upperci
 1     cov  7.752158      NA      NA
 2     cov 41.500365      NA      NA</code></pre>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">multiplemeasures</span><span class="op">$</span><span class="va">bgv</span></span></code></pre></div>
 <pre class="bg-warning"><code>  measure   estimate         se    lowerci    upperci
 1     bgv   50.42023   9.560196   31.68259   69.15787
