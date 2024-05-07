@@ -22,16 +22,18 @@ rci(
 )
 }
 \arguments{
-\item{est}{The subgroup estimate. Estimates must be
-available for all subgroups.}
+\item{est}{The indicator estimate.
+Estimates must be available for all subgroups/individuals
+(unless force=TRUE).}
 
-\item{subgroup_order}{The order of subgroups in an increasing sequence.}
+\item{subgroup_order}{The order of subgroups/individuals in an increasing
+sequence.}
 
 \item{scaleval}{The scale of the indicator. For example, the
 scale of an indicator measured as a percentage is 100. The
 scale of an indicator measured as a rate per 1000 population is 1000.}
 
-\item{pop}{The number of people within each subgroup.
+\item{pop}{The number of people within each subgroup (for disaggregated data).
 Population size must be available for all subgroups.}
 
 \item{weight}{Individual sampling weight (required if data come from a
@@ -41,16 +43,19 @@ survey)}
 
 \item{strata}{Strata (required if data come from a survey)}
 
-\item{fpc}{Finite population correction}
+\item{fpc}{Finite population correction (if data come from a survey and
+sample size is large relative to population size).}
 
 \item{method}{Normalisation method for bounded indicators. Options available
 Wagstaff (\code{wagstaff}) or Erreygers (\code{erreygers}) correction.}
 
-\item{lmin}{Theoretical minimum for bounded indicators.}
+\item{lmin}{Minimum limit for bounded indicators
+(i.e., variables that have a finite upper and/or lower limit).}
 
-\item{lmax}{Theoretical maximum for bounded indicators.}
+\item{lmax}{Maximum limit for bounded indicators
+(i.e., variables that have a finite upper and/or lower limit).}
 
-\item{conf.level}{confidence level of the interval.}
+\item{conf.level}{Confidence level of the interval. Default is 0.95 (95\%).}
 
 \item{force}{TRUE/FALSE statement to force calculation with missing
 indicator estimate values.}
@@ -71,14 +76,15 @@ according to their population share, while individuals are weighted by
 sample weight in the case of data from surveys.
 }
 \details{
-RCI is calculated by dividing the absolute concentration index (ACI)
-by the setting average. RCI may be more easily interpreted
-when multiplied by 100. The calculation of ACI is based on a
-ranking of the whole population from the most-disadvantaged
-subgroup (at rank 0) to the most-advantaged subgroup (at rank 1),
-which is inferred from the ranking and size of the subgroups.
-For more information on this inequality measure see
-Schlotheuber, A., & Hosseinpoor, A. R. (2022) below.
+The calculation of RCI is based on a ranking of the whole population from
+the most-disadvantaged subgroup (at rank 0) to the most-advantaged subgroup
+(at rank 1), which is inferred from the ranking and size of the subgroups.
+RCI can be calculated as twice the covariance between the health indicator
+and the relative rank, divided by the indicator mean. Given the relationship
+between covariance and ordinary least squares regression, RCI can be
+obtained from a regression of a transformation of the health variable of
+interest on the relative rank. For more information on this inequality
+measure see Schlotheuber, A., & Hosseinpoor, A. R. (2022) below.
 
 \strong{Interpretation:} RCI is bounded between -1 and +1 (or between -100
 and +100, when multiplied by 100). The larger the absolute value of RCI,
@@ -115,4 +121,13 @@ Schlotheuber, A., & Hosseinpoor, A. R. (2022).
 Summary measures of health inequality: A review of existing
 measures and their application. International Journal of
 Environmental Research and Public Health, 19 (6), 3697.
+
+Wagstaff A. (2005).
+The bounds of the concentration index when the variable of
+interest is binary, with an application to immunization
+inequality. Health Economics, 14:429–432.
+
+Erreygers G. (2009).
+Correcting the Concentration Index. Journal of Health Economics,
+28:504–515.
 }

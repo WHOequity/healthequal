@@ -17,10 +17,10 @@ d(
 }
 \arguments{
 \item{est}{The subgroup estimate.
-Estimates must be available for all subgroups.}
+Estimates must be available for the two subgroups being compared.}
 
 \item{se}{The standard error of the subgroup estimate.
-If this is missing, 95\% confidence intervals of MDBU cannot be calculated.}
+If this is missing, confidence intervals of D cannot be calculated.}
 
 \item{favourable_indicator}{Records whether the indicator is
 favourable (1) or non-favourable (0). Favourable indicators measure
@@ -33,12 +33,13 @@ mortality rate).}
 \item{ordered_dimension}{Records whether the dimension is ordered (1)
 or not (0).}
 
-\item{subgroup_order}{The order of subgroups in an increasing sequence.}
+\item{subgroup_order}{The order of subgroups in an increasing sequence.
+Required if the dimension is ordered (ordered_dimension=1).}
 
 \item{reference_subgroup}{Identifies a reference subgroup with the value of
 1.}
 
-\item{conf.level}{confidence level of the interval.}
+\item{conf.level}{Confidence level of the interval. Default is 0.95 (95\%).}
 
 \item{...}{Further arguments passed to or from other methods.}
 }
@@ -53,18 +54,28 @@ information on this inequality measure see Schlotheuber, A., & Hosseinpoor,
 A. R. (2022) below.
 }
 \details{
-D is calculated as: \code{D = y_1 - y_2}, where \code{y_1} and \code{y_2} indicate the
+D is calculated as: \code{D = y1 - y2}, where \code{y1} and \code{y2} indicate the
 estimates for subgroups 1 and 2. The selection of the two subgroups depends
 on the characteristics of the inequality dimension and the purpose of the
 analysis. In addition, the direction of the calculation may depend on the
 indicator type (favourable or#'  adverse).
 
+Ordered dimension:
+Favourable indicator: Most-advantaged subgroup - Least-advantaged subgroup
+Adverse indicator: Least-advantaged subgroup - Most-advantaged subgroup
+
+Non-ordered dimension:
+No reference group & favourable indicator: Highest estimate - Lowest estimate
+No reference group & adverse indicator: Lowest estimate - Highest estimate
+Reference group & favourable indicator: Reference estimate - Lowest estimate
+Reference group & adverse indicator: Lowest estimate - Reference estimate
+
 \strong{Interpretation:} Greater absolute values indicate higher levels of
 inequality. D is zero if there is no inequality.
 
-\strong{Type of summary measure:} Simple; relative; unweighted
+\strong{Type of summary measure:} Simple; relative; unweighted.
 
-\strong{Applicability:} Any
+\strong{Applicability:} Any dimension of inequality.
 
 \strong{Warning:} The confidence intervals are approximate
 and might be biased.

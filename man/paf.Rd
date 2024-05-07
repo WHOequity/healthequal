@@ -27,7 +27,7 @@ available for all subgroups.}
 or not (0).}
 
 \item{subgroup_order}{The order of subgroups in an increasing sequence,
-if the dimension is ordered.}
+if the dimension is ordered (ordered dimension=1).}
 
 \item{setting_average}{The reported setting average. Setting average must
 be unique for each setting, year, indicator combination.
@@ -46,7 +46,7 @@ mortality rate).}
 scale of an indicator measured as a percentage is 100. The
 scale of an indicator measured as a rate per 1000 population is 1000.}
 
-\item{conf.level}{confidence level of the interval.}
+\item{conf.level}{Confidence level of the interval. Default is 0.95 (95\%).}
 
 \item{...}{Further arguments passed to or from other methods.}
 }
@@ -111,7 +111,7 @@ Summary measures of health inequality: A review of existing
 measures and their application. International Journal of
 Environmental Research and Public Health, 19 (6), 3697.
 
-Walter, Stephen D. 1978. “Calculation of Attributable
+Walter, S. D. (1978). “Calculation of Attributable
 Risks from Epidemiological Data.” International Journal of Epidemiology
-7 (2): 175–82. https://doi.org/10.1093/IJE/7.2.175.
+7 (2): 175–82.
 }
