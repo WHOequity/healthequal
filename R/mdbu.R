@@ -148,8 +148,10 @@ mdbu <- function(est,
 
     }
 
-    boot.lcl <- quantile(mdbu_sim, probs = c(0.025), na.rm = TRUE)
-    boot.ucl <- quantile(mdbu_sim, probs = c(0.975), na.rm = TRUE)
+    boot.lcl <- quantile(mdbu_sim, probs = c(0.025), na.rm = TRUE,
+                          names = FALSE)
+    boot.ucl <- quantile(mdbu_sim, probs = c(0.975), na.rm = TRUE,
+                          names = FALSE)
   }
 
   # Return data frame

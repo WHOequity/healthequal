@@ -153,8 +153,10 @@ mdrw <- function(pop,
 
   }
 
-  boot.lcl <- quantile(mdrw_sim, probs = c(0.025), na.rm = TRUE)
-  boot.ucl <- quantile(mdrw_sim, probs = c(0.975), na.rm = TRUE)
+  boot.lcl <- quantile(mdrw_sim, probs = c(0.025), na.rm = TRUE,
+                          names = FALSE)
+  boot.ucl <- quantile(mdrw_sim, probs = c(0.975), na.rm = TRUE,
+                          names = FALSE)
 
   # Return data frame
 

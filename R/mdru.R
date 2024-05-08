@@ -141,8 +141,10 @@ mdru <- function(est,
 
   }
 
-  boot.lcl <- quantile(mdru_sim, probs = c(0.025), na.rm = TRUE)
-  boot.ucl <- quantile(mdru_sim, probs = c(0.975), na.rm = TRUE)
+  boot.lcl <- quantile(mdru_sim, probs = c(0.025), na.rm = TRUE,
+                          names = FALSE)
+  boot.ucl <- quantile(mdru_sim, probs = c(0.975), na.rm = TRUE,
+                          names = FALSE)
 
   # Return data frame
 

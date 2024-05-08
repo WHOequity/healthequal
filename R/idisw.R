@@ -147,15 +147,16 @@ idisw <- function(pop,
 
     }
 
-    boot.lcl  <- quantile(idisw_sim, probs = c(0.025), na.rm = TRUE)
-    boot.ucl <- quantile(idisw_sim, probs = c(0.975), na.rm = TRUE)
+    boot.lcl  <- quantile(idisw_sim, probs = c(0.025), na.rm = TRUE,
+                          names = FALSE)
+    boot.ucl <- quantile(idisw_sim, probs = c(0.975), na.rm = TRUE,
+                          names = FALSE)
   }
 
   # Return data frame
 
   return(data.frame(measure = "idisw",
                     estimate = idisw,
-                    se = NA,
                     lowerci = boot.lcl[[1]],
                     upperci = boot.ucl[[1]])
          )
