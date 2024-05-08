@@ -149,7 +149,7 @@ idisu <- function(pop=NULL,
                  {result <- if (scaleval != 100) {
                    repeat {
                      result <- rnorm(1, mean = est, sd = se)
-                     if (result > 0) break
+                     if (result >= 0) break
                      }
                    result
                    } else {
