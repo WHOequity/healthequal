@@ -488,12 +488,13 @@ calculate COV for two different dimensions.</p>
 <span>                   <span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="va">measures</span>  </span></code></pre></div>
-<pre class="bg-warning"><code> [38;5;246m# A tibble: 2 × 5 [39m
-  indicator                                     measure estimate lowerci upperci
-   [3m [38;5;246m&lt;chr&gt; [39m [23m                                          [3m [38;5;246m&lt;chr&gt; [39m [23m       [3m [38;5;246m&lt;dbl&gt; [39m [23m  [3m [38;5;246m&lt;lgl&gt; [39m [23m    [3m [38;5;246m&lt;lgl&gt; [39m [23m  
- [38;5;250m1 [39m Births attended by skilled health personnel … cov         7.75  [31mNA [39m       [31mNA [39m     
- [38;5;250m2 [39m Under-five mortality rate (deaths per 1000 l… cov        41.5   [31mNA [39m       [31mNA [39m     </code></pre>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">measures</span><span class="op">)</span> </span></code></pre></div>
+<pre class="bg-warning"><code>                                                indicator measure  estimate
+1         Births attended by skilled health personnel (%)     cov  7.752158
+2 Under-five mortality rate (deaths per 1000 live births)     cov 41.500365
+  lowerci upperci
+1      NA      NA
+2      NA      NA</code></pre>
 <p>The <code>NonorderedSampleMultipleind</code> dataset can also be used
 to calculate two or more different summary measures (in the example
 below COV and BGV) for multiple dimensions.</p>
