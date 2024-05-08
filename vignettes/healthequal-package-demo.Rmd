@@ -214,7 +214,7 @@ measures <- NonorderedSampleMultipleind %>%
                    )
   )
 
-measures  
+as.data.frame(measures) 
 
 ```
 
