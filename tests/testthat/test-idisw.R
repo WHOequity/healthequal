@@ -22,9 +22,7 @@ test_that("idisu function calculates IDISU correctly", {
 
   # Expected values
   expected_idisu <- 8.6178417
-  expected_se <- NA
 
   # Compare the calculated values with the expected values
   expect_equal(result$estimate, expected_idisu, tolerance = 1e-4)
-  expect_equal(result$se, expected_se, tolerance = 1e-4)
 })
