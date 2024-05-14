@@ -20,8 +20,7 @@ test_that("parisk function calculates parisk correctly", {
                 se = se,
                 scaleval = scale,
                 ordered_dimension = ordered,
-                favourable_indicator = fav,
-                reference_subgroup = ref
+                favourable_indicator = fav
                 )
 
   # Expected values

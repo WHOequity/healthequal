@@ -163,7 +163,7 @@ parisk <- function(pop = NULL,
                   favourable_indicator[1] == 1 |
                   ref_estimate - weighted_mean > 0 &
                   favourable_indicator[1] == 0,
-                  parisk == 0, ref_estimate - weighted_mean)
+                  0, ref_estimate - weighted_mean)
 
   # Calculate 95% confidence intervals
   se.formula <- NA
