@@ -238,7 +238,7 @@ sii <- function(est,
       mod <- glm(formula = cbind(y, ny) ~ rank,
                 weights = pop,
                 data = newdat_sii,
-                family = binomial("logit"))
+                family = quasibinomial("logit"))
     } else {
       mod <- glm(est_sc ~ rank,
                 data = newdat_sii,
