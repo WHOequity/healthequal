@@ -31,7 +31,7 @@ The development version can be installed from
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("WHO/healthequal")
+remotes::install_github("WHOequity/healthequal")
 ```
 
 ## Measures of health inequality included in `healthequal`:
