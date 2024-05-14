@@ -3,7 +3,7 @@ pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   healthequal-package-demo: healthequal-package-demo.html
-last_built: 2024-05-13T08:41Z
+last_built: 2024-05-14T07:56Z
 urls:
   reference: https://whoequity.github.io/healthequal/reference
   article: https://whoequity.github.io/healthequal/articles
