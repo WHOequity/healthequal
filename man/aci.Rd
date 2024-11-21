@@ -20,25 +20,24 @@ aci(
 )
 }
 \arguments{
-\item{est}{The indicator estimate.
-Estimates must be available for all subgroups/individuals
-(unless force=TRUE).}
+\item{est}{The indicator estimate. Estimates must be available for all
+subgroups/individuals (unless force=TRUE).}
 
 \item{subgroup_order}{The order of subgroups/individuals in an increasing
 sequence.}
 
-\item{pop}{The number of people within each subgroup (for disaggregated data).
-Population size must be available for all subgroups.}
+\item{pop}{For disaggregated data, the number of people within each subgroup.
+This must be available for all subgroups.}
 
-\item{weight}{Individual sampling weight (required if data come from a
-survey).}
+\item{weight}{The individual sampling weight, for individual-level data from
+a survey. This must be available for all individuals.}
 
-\item{psu}{Primary sampling unit (required if data come from a survey)}
+\item{psu}{Primary sampling unit, for individual-level data from a survey.}
 
-\item{strata}{Strata (required if data come from a survey)}
+\item{strata}{Strata, for individual-level data from a survey.}
 
-\item{fpc}{Finite population correction (if data come from a survey and
-sample size is large relative to population size).}
+\item{fpc}{Finite population correction, for individual-level data from a
+survey where sample size is large relative to population size.}
 
 \item{lmin}{Minimum limit for bounded indicators
 (i.e., variables that have a finite upper and/or lower limit).}
@@ -69,30 +68,27 @@ share, while individuals are weighted by sample weight in the case of data
 from surveys.
 
 The calculation of ACI is based on a ranking of the whole population from
-the most-disadvantaged subgroup (at rank 0) to the most-advantaged subgroup
+the most disadvantaged subgroup (at rank 0) to the most advantaged subgroup
 (at rank 1), which is inferred from the ranking and size of the subgroups.
 ACI can be calculated as twice the covariance between the health indicator
 and the relative rank. Given the relationship between covariance and
 ordinary least squares regression, ACI can be obtained from a
 regression of a transformation of the health variable of interest on the
 relative rank. For more information on this inequality measure see
-Schlotheuber, A., & Hosseinpoor, A. R. (2022) below.
+Schlotheuber (2022) below.
 
-\strong{Interpretation:} The larger the absolute value of ACI, the higher the
-level of inequality. For favourable indicators, positive values indicate
-a concentration of the indicator among the advantaged, while negative
-values indicate a concentration of the indicator among the disadvantaged.
-For adverse indicators, it is the reverse: positive values indicate a
-concentration of the indicator among the disadvantaged, while negative
-values indicate a concentration of the indicator among the advantaged.
-ACI is zero if there is no inequality.
+\strong{Interpretation:} ACI is 0 if there is no inequality. The larger the
+absolute value of ACI, the higher the level of inequality. Positive values
+indicate a concentration of the indicator among advantaged subgroups, and
+negative values indicate a concentration of the indicator among
+disadvantaged subgroups.
 
 \strong{Type of summary measure:} Complex; absolute; weighted
 
-\strong{Applicability:} Ordered; more than two subgroups
+\strong{Applicability:} Ordered dimension of inequality with more than two
+subgroups
 
-\strong{Warning:} The confidence intervals are approximate
-and might be biased.
+\strong{Warning:} The confidence intervals are approximate and might be biased.
 }
 \examples{
 # example code
@@ -103,13 +99,17 @@ with(IndividualSample,
          subgroup_order = subgroup_order,
          weight = weight,
          psu = psu,
-         strata = strata
-         )
-     )
+         strata = strata))
+# example code
+data(OrderedSample)
+head(OrderedSample)
+with(OrderedSample,
+     aci(est = estimate,
+         subgroup_order = subgroup_order,
+         pop = population))
 }
 \references{
-Schlotheuber, A., & Hosseinpoor, A. R. (2022).
-Summary measures of health inequality: A review of existing
-measures and their application. International Journal of
-Environmental Research and Public Health, 19 (6), 3697.
+Schlotheuber, A, Hosseinpoor, AR. Summary measures of health
+inequality: A review of existing measures and their application. Int J
+Environ Res Public Health. 2022;19(6):3697. doi:10.3390/ijerph19063697.
 }

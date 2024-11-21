@@ -2,21 +2,24 @@
 % Please edit documentation in R/ti.R
 \name{ti}
 \alias{ti}
-\title{Theil Index (TI)}
+\title{Theil index (TI)}
 \usage{
-ti(pop, est, se = NULL, conf.level = 0.95, ...)
+ti(est, se = NULL, pop, conf.level = 0.95, force = FALSE, ...)
 }
 \arguments{
-\item{pop}{The number of people within each subgroup.
-Population size must be available for all subgroups.}
+\item{est}{The subgroup estimate. Estimates must be available for at least
+85\% of subgroups.}
 
-\item{est}{The subgroup estimate. Estimates must be
-available for at least 85\% of subgroups.}
+\item{se}{The standard error of the subgroup estimate. If this is missing,
+95\% confidence intervals cannot be calculated.}
 
-\item{se}{The standard error of the subgroup estimate.
-If this is missing, confidence intervals of TI cannot be calculated.}
+\item{pop}{The number of people within each subgroup.Population size must be
+available for all subgroups.}
 
 \item{conf.level}{Confidence level of the interval. Default is 0.95 (95\%).}
+
+\item{force}{TRUE/FALSE statement to force calculation when more than 85\% of
+subgroup estimates are missing.}
 
 \item{...}{Further arguments passed to or from other methods.}
 }
@@ -25,49 +28,47 @@ The estimated TI value, corresponding estimated standard error,
 and confidence interval as a \code{data.frame}.
 }
 \description{
-The Theil Index (TI) is a relative measure of inequality that
-considers all population subgroups. Subgroups are weighted
-according to their population share.
+The Theil index (TI) is a relative measure of inequality that considers
+all population subgroups. Subgroups are weighted according to their
+population share.
 }
 \details{
-TI is calculated as the sum of products of the natural logarithm
-of the share of the indicator of each subgroup, the share of the
+TI measures the extent to which the shares of the population and shares of
+the health indicator differ across subgroups, weighted by shares of the
+health indicator. TI is calculated as the sum of products of the natural
+logarithm of the share of the indicator of each subgroup, the share of the
 indicator of each subgroup and the population share of each subgroup.
 TI may be easily interpreted when multiplied by 1000. For more
-information on this inequality measure see
-Schlotheuber, A., & Hosseinpoor, A. R. (2022) below.
+information on this inequality measure see Schlotheuber (2022) below.
 
-\strong{Interpretation:} Greater absolute values indicate higher levels of
-inequality. TI is zero if there is no inequality. TI is more sensitive
-to differences further from the setting average (by the use of the
-logarithm).
+\strong{Interpretation:} TI is 0 if there is no inequality. Greater absolute
+values indicate higher levels of inequality. TI is more sensitive to
+differences further from the setting average (by the use of the logarithm).
+TI has no unit.
 
 \strong{Type of summary measure:} Complex; relative; weighted
 
-\strong{Applicability:} Non-ordered; more than two subgroups
+\strong{Applicability:} Non-ordered dimensions of inequality with more than two
+subgroups
 
-\strong{Warning:} The confidence intervals are approximate
-and might be biased. See Ahn J. et al. (2018) below for
-further information on the standard error formula.
+\strong{Warning:} The confidence intervals are approximate and might be biased.
+See Ahn (2018) below for further information on the standard error formula.
 }
 \examples{
 # example code
 data(NonorderedSample)
 head(NonorderedSample)
 with(NonorderedSample,
-     ti(pop = population,
-        est = estimate,
-        se = se
-        )
-     )
+     ti(est = estimate,
+        se = se,
+        pop = population))
 }
 \references{
-Schlotheuber, A., & Hosseinpoor, A. R. (2022).
-Summary measures of health inequality: A review of existing
-measures and their application. International Journal of
-Environmental Research and Public Health, 19 (6), 3697.
+Schlotheuber, A, Hosseinpoor, AR. Summary measures of health
+inequality: A review of existing measures and their application. Int J
+Environ Res Public Health. 2022;19(6):3697. doi:10.3390/ijerph19063697.
 
-Ahn J, Harper S, Yu M, Feuer EJ, Liu B, Luta G. (2018).
-Variance Estimation and Confidence Intervals for 11 Commonly Used
-Health Disparity Measures. JCO Clin Cancer Inform. Dec;2:1--19.
+Ahn J, Harper S, Yu M, Feuer EJ, Liu B, Luta G. Variance
+estimation and confidence intervals for 11 commonly used health disparity
+measures. JCO Clin Cancer Inform. 2018;2:1-19. doi:10.1200/CCI.18.00031.
 }

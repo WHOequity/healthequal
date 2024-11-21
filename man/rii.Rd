@@ -8,11 +8,10 @@ rii(
   est,
   subgroup_order,
   pop = NULL,
-  scaleval = NULL,
   weight = NULL,
   psu = NULL,
-  fpc = NULL,
   strata = NULL,
+  fpc = NULL,
   conf.level = 0.95,
   linear = FALSE,
   force = FALSE,
@@ -20,34 +19,29 @@ rii(
 )
 }
 \arguments{
-\item{est}{The indicator estimate.
-Estimates must be available for all subgroups/individuals
-(unless force=TRUE).}
+\item{est}{The indicator estimate. Estimates must be available for all
+subgroups/individuals (unless force=TRUE).}
 
 \item{subgroup_order}{The order of subgroups/individuals in an increasing
 sequence.}
 
-\item{pop}{The number of people within each subgroup (for disaggregated data).
-Population size must be available for all subgroups.}
+\item{pop}{For disaggregated data, the number of people within each subgroup.
+This must be available for all subgroups.}
 
-\item{scaleval}{The scale of the indicator. For example, the
-scale of an indicator measured as a percentage is 100. The
-scale of an indicator measured as a rate per 1000 population is 1000.}
+\item{weight}{The individual sampling weight, for individual-level data from
+a survey. This must be available for all individuals.}
 
-\item{weight}{Individual sampling weight (required if data come from a
-survey)}
+\item{psu}{Primary sampling unit, for individual-level data from a survey.}
 
-\item{psu}{Primary sampling unit (required if data come from a survey)}
+\item{strata}{Strata, for individual-level data from a survey.}
 
-\item{fpc}{Finite population correction (if data come from a survey and
-sample size is large relative to population size).}
-
-\item{strata}{Strata (required if data come from a survey)}
+\item{fpc}{Finite population correction, for individual-level data from a
+survey where sample size is large relative to population size.}
 
 \item{conf.level}{Confidence level of the interval. Default is 0.95 (95\%).}
 
 \item{linear}{TRUE/FALSE statement to specify the use of a linear
-regression model for RII estimation (default is logistic regression)}
+regression model (default is logistic regression).}
 
 \item{force}{TRUE/FALSE statement to force calculation with missing
 indicator estimate values.}
@@ -60,51 +54,54 @@ and confidence interval as a \code{data.frame}.
 }
 \description{
 The relative index of inequality (RII) is a relative measure of inequality
-that represents the ratio of estimated indicator values between the
-most-advantaged and most-disadvantaged, while taking into consideration the
-situation in all other subgroups/individuals – using an appropriate
-regression model. RII can be calculated using disaggregated data and
-individual-level data. Subgroups in disaggregated data are weighted
-according to their population share, while individuals are weighted by
-sample weight in the case of data from surveys.
+that represents the ratio of predicted values of an indicator between the
+most advantaged and most disadvantaged subgroups, obtained by fitting a
+regression model.
 }
 \details{
-To calculate RII, a weighted sample of the whole population is ranked from
-the most-disadvantaged subgroup (at rank 0) to the most-advantaged subgroup
-(at rank 1). This ranking is weighted, accounting for the proportional
-distribution of the population within each subgroup. The population of
-each subgroup is then considered in terms of its range in the cumulative
-population distribution, and the midpoint of this range. The indicator of
-interest is then regressed against this midpoint value using an appropriate
-regression model (e.g., a generalized linear model with logit link), and
-the predicted values of the indicator are calculated for the two extremes
-(rank 1 and rank 0). The ratio between the estimated values at rank 1
-and rank 0 (covering the entire distribution) generates the RII value.
-For more information on this inequality measure see Schlotheuber, A., &
-Hosseinpoor, A. R. (2022) below.
+RII can be calculated using disaggregated data and individual-level data.
+Subgroups in disaggregated data are weighted according to their population
+share, while individuals are weighted by sample weight in the case of data
+from surveys.
 
-\strong{Interpretation:} RII has the value of one if there is no inequality. RII
-has only positive values. Greater absolute values indicate higher levels of
-inequality. The further the value of RII from one, the higher the level of
-inequality. For favourable indicators, values larger than one indicate a
-concentration of the indicator among the advantaged and values smaller than
-one indicate a concentration of the indicator among the disadvantaged. For
-adverse indicators, values larger than one indicate a concentration of the
-indicator among the disadvantaged and values smaller than one indicate a
-concentration of the indicator among the advantaged. RII is a multiplicative
-measure and has to be displayed on a logarithmic scale (values larger than
-one are equivalent in magnitude to their reciprocal values smaller than one,
-e.g., a value of 2 is equivalent in magnitude to a value of 0.5).
+To calculate RII, a weighted sample of the whole population is ranked from
+the most disadvantaged subgroup (at rank 0) to the most advantaged subgroup
+(at rank 1). This ranking is weighted, accounting for the proportional
+distribution of the population within each subgroup. The indicator of
+interest is then regressed against this relative rank using an appropriate
+regression model, and the predicted values of the indicator are calculated
+for the two extremes (rank 1 and rank 0). RII is calculated as the
+ratio between the predicted values at rank 1 and rank 0 (covering the
+entire distribution). For more information on this inequality measure see
+Schlotheuber (2022) below.
+
+The default regression model used is a generalized linear model with logit
+link. In logistic regression, the relationship between the indicator and the
+subgroup rank is not assumed to be linear and, due to the logit link, the
+predicted values from the regression model will be bounded between 0 and 1
+(which is ideal for indicators measured as percentages). Specify Linear=TRUE
+to use a linear regression model, which may be more appropriate for
+indicators without a 0-1 or 0-100\% scale.
+
+\strong{Interpretation:} RII takes only positive values. RII has the value of 1
+if there is no inequality. Values larger than 1 indicate the level of the
+indicator is higher among advantaged subgroups, and values lower than 1
+indicate the level of the indicator is higher among disadvantaged subgroups.
+Note that this results in different interpretations for favourable and
+adverse indicators. RII is a multiplicative measure and therefore results
+should be displayed on a logarithmic scale. Values larger than 1 are
+equivalent in magnitude to their reciprocal values smaller than 1 (e.g. a
+value of 2 is equivalent in magnitude to a value of 0.5).
 
 \strong{Type of summary measure:} Complex; relative; weighted
 
-\strong{Applicability:} Ordered; more than two subgroups
+\strong{Applicability:} Ordered dimension of inequality with more than two
+subgroups
 
-\strong{Warning:} The confidence intervals are approximate
-and might be biased.
+\strong{Warning:} The confidence intervals are approximate and might be biased.
 }
 \examples{
-# example code
+# example code 1
 data(IndividualSample)
 head(IndividualSample)
 with(IndividualSample,
@@ -112,13 +109,17 @@ with(IndividualSample,
          subgroup_order = subgroup_order,
          weight = weight,
          psu = psu,
-         strata = strata
-         )
-     )
+         strata = strata))
+# example code 2
+data(OrderedSample)
+head(OrderedSample)
+with(OrderedSample,
+     rii(est = estimate,
+         subgroup_order = subgroup_order,
+         pop = population))
 }
 \references{
-Schlotheuber, A., & Hosseinpoor, A. R. (2022).
-Summary measures of health inequality: A review of existing
-measures and their application. International journal of
-environmental research and public health, 19 (6), 3697.
+Schlotheuber, A, Hosseinpoor, AR. Summary measures of health
+inequality: A review of existing measures and their application. Int J
+Environ Res Public Health. 2022;19(6):3697. doi:10.3390/ijerph19063697.
 }

@@ -2,46 +2,50 @@
 % Please edit documentation in R/mdbw.R
 \name{mdbw}
 \alias{mdbw}
-\title{Mean difference from the best-performing subgroup (weighted) (MDBW)}
+\title{Mean difference from best-performing subgroup (weighted) (MDBW)}
 \usage{
 mdbw(
-  pop,
   est,
   se = NULL,
+  pop,
   favourable_indicator,
-  scaleval,
+  scaleval = NULL,
   sim = NULL,
   seed = 123456,
+  force = FALSE,
   ...
 )
 }
 \arguments{
-\item{pop}{The number of people within each subgroup.
-Population size must be available for all subgroups.}
+\item{est}{The subgroup estimate. Estimates must be available for at least
+85\% of subgroups.}
 
-\item{est}{The subgroup estimate.
-Estimates must be available for at least 85\% of subgroups.}
+\item{se}{The standard error of the subgroup estimate. If this is missing,
+95\% confidence intervals cannot be calculated.}
 
-\item{se}{The standard error of the subgroup estimate.
-If this is missing, 95\% confidence intervals of MDBW cannot be calculated.}
+\item{pop}{The number of people within each subgroup.Population size must be
+available for all subgroups.}
 
-\item{favourable_indicator}{Records whether the indicator is
-favourable (1) or non-favourable (0). Favourable indicators measure
-desirable health events where the ultimate goal is
-to achieve a maximum level (such as skilled birth attendance).
-Non-favourable indicators measure undesirable health events where
-the ultimate goal is to achieve a minimum level (such as under-five
-mortality rate).}
+\item{favourable_indicator}{Records whether the indicator is favourable (1)
+or adverse (0). Favourable indicators measure desirable health events where
+the ultimate goal is to achieve a maximum level (such as skilled birth
+attendance). Adverse indicators measure undesirable health events where the
+ultimate goal is to achieve a minimum level (such as under-five mortality
+rate).}
 
-\item{scaleval}{The scale of the indicator. For example, the
-scale of an indicator measured as a percentage is 100. The
-scale of an indicator measured as a rate per 1000 population is 1000.}
+\item{scaleval}{The scale of the indicator. For example, the scale of an
+indicator measured as a percentage is 100. The scale of an indicator measured
+as a rate per 1000 population is 1000. If this is missing, 95\% confidence
+intervals cannot be calculated.}
 
 \item{sim}{The number of simulations to estimate 95\% confidence intervals.
 Default is 100.}
 
 \item{seed}{The random number generator (RNG) state for the 95\% confidence
 interval simulation. Default is 123456.}
+
+\item{force}{TRUE/FALSE statement to force calculation when more than 85\% of
+subgroup estimates are missing.}
 
 \item{...}{Further arguments passed to or from other methods.}
 }
@@ -50,44 +54,46 @@ The estimated MDBW value, corresponding estimated standard error,
 and confidence interval as a \code{data.frame}.
 }
 \description{
-The Mean Difference from the Best-Performing Subgroup (MDB) is an absolute
+The mean difference from the best-performing subgroup (MDB) is an absolute
 measure of inequality that shows the mean difference between each population
-subgroup and the subgroup with the best estimate. For the weighted version
-(MDBW), subgroups are weighted according to their population share.
+subgroup and the subgroup with the best estimate. The best-performing subgroup is
+the subgroup with the highest value in the case of favourable indicators
+and the subgroup with the lowest value in the case of adverse indicators.
 }
 \details{
 The weighted version (MDBW) is calculated as the weighted average of
 absolute differences between the subgroup estimates and the estimate for the
-best-performing subgroup, divided by the number of subgroups. For more
-information on this inequality measure see Schlotheuber, A., &
-Hosseinpoor, A. R. (2022) below.
+best-performing subgroup, divided by the number of subgroups. Subgroups are
+weighted according to their population share. For more information on this
+inequality measure see Schlotheuber (2022) below.
 
-95\% confidence intervals are calculated using a methodology of simulated
-estimates. The dataset is simulated a large number of times (e.g., 100)
-and MDBW is calculated for each of the simulated samples. The 95\%
-confidence intervals are based on the 2.5th and 97.5th percentiles of the
-MDBW results.
+95\% confidence intervals are calculated using a Monte Carlo simulation-based
+method. The dataset is simulated a large number of times (e.g. 100), with
+the mean and standard error of each simulated dataset being the same as the
+original dataset. MDBW is calculated for each of the simulated sample
+datasets. The 95\% confidence intervals are based on the 2.5th and 97.5th
+percentiles of the MDBW results. See Ahn (2019) below for further
+information.
 
 \strong{Interpretation:} MDBW only has positive values, with larger values
-indicating higher levels of inequality. MDBW is zero if there is no
-inequality.
+indicating higher levels of inequality. MDBW is 0 if there is no
+inequality. MDBW has the same unit as the indicator.
 
 \strong{Type of summary measure:} Complex; absolute; weighted
 
-\strong{Applicability:} Non-ordered; more than two subgroups
+\strong{Applicability:} Non-ordered dimensions of inequality with more than two
+subgroups
 }
 \examples{
 # example code
 data(NonorderedSample)
 head(NonorderedSample)
 with(NonorderedSample,
-     mdbw(pop = population,
-          est = estimate,
-          se,
-          scaleval = indicator_scale,
-          favourable_indicator
-         )
-     )
+     mdbw(est = estimate,
+          se = se,
+          pop = population,
+          favourable_indicator,
+          scaleval = indicator_scale))
 }
 \references{
 Schlotheuber, A., & Hosseinpoor, A. R. (2022).

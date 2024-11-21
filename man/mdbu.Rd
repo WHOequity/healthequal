@@ -2,42 +2,46 @@
 % Please edit documentation in R/mdbu.R
 \name{mdbu}
 \alias{mdbu}
-\title{Mean difference from the best-performing subgroup (unweighted) (MDBU)}
+\title{Mean difference from best-performing subgroup (unweighted) (MDBU)}
 \usage{
 mdbu(
   est,
   se = NULL,
   favourable_indicator,
-  scaleval,
+  scaleval = NULL,
   sim = NULL,
   seed = 123456,
+  force = FALSE,
   ...
 )
 }
 \arguments{
-\item{est}{The subgroup estimate.
-Estimates must be available for at least 85\% of subgroups.}
+\item{est}{The subgroup estimate. Estimates must be available for at least
+85\% of subgroups.}
 
-\item{se}{The standard error of the subgroup estimate.
-If this is missing, 95\% confidence intervals of MDBU cannot be calculated.}
+\item{se}{The standard error of the subgroup estimate. If this is missing,
+95\% confidence intervals cannot be calculated.}
 
-\item{favourable_indicator}{Records whether the indicator is
-favourable (1) or non-favourable (0). Favourable indicators measure
-desirable health events where the ultimate goal is
-to achieve a maximum level (such as skilled birth attendance).
-Non-favourable indicators measure undesirable health events where
-the ultimate goal is to achieve a minimum level (such as under-five
-mortality rate).}
+\item{favourable_indicator}{Records whether the indicator is favourable (1)
+or adverse (0). Favourable indicators measure desirable health events where
+the ultimate goal is to achieve a maximum level (such as skilled birth
+attendance). Adverse indicators measure undesirable health events where the
+ultimate goal is to achieve a minimum level (such as under-five mortality
+rate).}
 
-\item{scaleval}{The scale of the indicator. For example, the
-scale of an indicator measured as a percentage is 100. The
-scale of an indicator measured as a rate per 1000 population is 1000.}
+\item{scaleval}{The scale of the indicator. For example, the scale of an
+indicator measured as a percentage is 100. The scale of an indicator measured
+as a rate per 1000 population is 1000. If this is missing, 95\% confidence
+intervals cannot be calculated.}
 
 \item{sim}{The number of simulations to estimate 95\% confidence intervals.
 Default is 100.}
 
 \item{seed}{The random number generator (RNG) state for the 95\% confidence
 interval simulation. Default is 123456.}
+
+\item{force}{TRUE/FALSE statement to force calculation when more than 85\% of
+subgroup estimates are missing.}
 
 \item{...}{Further arguments passed to or from other methods.}
 }
@@ -46,31 +50,35 @@ The estimated MDBU value, corresponding estimated standard error,
 and confidence interval as a \code{data.frame}.
 }
 \description{
-The Mean Difference from the Best-Performing Subgroup (MDB) is an absolute
+The mean difference from the best-performing subgroup (MDB) is an absolute
 measure of inequality that shows the mean difference between each population
-subgroup and the subgroup with the best estimate. For the unweighted version
-(MDBU), all subgroups are weighted equally.
+subgroup and the best-performing subgroup. The best-performing subgroup is
+the subgroup with the highest value in the case of favourable indicators
+and the subgroup with the lowest value in the case of adverse indicators.
 }
 \details{
 The unweighted version (MDBU) is calculated as the average of absolute
 differences between the subgroup estimates and the estimate for the
-best-performing subgroup, divided by the number of subgroups. For more
-information on this inequality measure see Schlotheuber, A., &
-Hosseinpoor, A. R. (2022) below.
+best-performing subgroup, divided by the number of subgroups. All subgroups
+are weighted equally. For more information on this inequality measure see
+Schlotheuber (2022) below.
 
-95\% confidence intervals are calculated using a methodology of simulated
-estimates. The dataset is simulated a large number of times (e.g., 100)
-and MDBU is calculated for each of the simulated samples. The 95\%
-confidence intervals are based on the 2.5th and 97.5th percentiles of the
-MDBU results.
+95\% confidence intervals are calculated using a Monte Carlo simulation-based
+method. The dataset is simulated a large number of times (e.g. 100), with
+the mean and standard error of each simulated dataset being the same as the
+original dataset. MDBU is calculated for each of the simulated sample
+datasets. The 95\% confidence intervals are based on the 2.5th and 97.5th
+percentiles of the MDBU results. See Ahn (2019) below for further
+information.
 
 \strong{Interpretation:} MDBU only has positive values, with larger values
-indicating higher levels of inequality. MDBU is zero if there is no
-inequality.
+indicating higher levels of inequality. MDBU is 0 if there is no
+inequality. MDBU has the same unit as the indicator.
 
 \strong{Type of summary measure:} Complex; absolute; non-weighted
 
-\strong{Applicability:} Non-ordered; more than two subgroups
+\strong{Applicability:} Non-ordered dimensions of inequality with more than two
+subgroups
 }
 \examples{
 # example code
@@ -78,15 +86,16 @@ data(NonorderedSample)
 head(NonorderedSample)
 with(NonorderedSample,
      mdbu(est = estimate,
-          se,
+          se = se,
           favourable_indicator,
-          scaleval = indicator_scale
-         )
-     )
+          scaleval = indicator_scale))
 }
 \references{
-Schlotheuber, A., & Hosseinpoor, A. R. (2022).
-Summary measures of health inequality: A review of existing
-measures and their application. International Journal of
-Environmental Research and Public Health, 19 (6), 3697.
+Schlotheuber, A, Hosseinpoor, AR. Summary measures of health
+inequality: A review of existing measures and their application. Int J
+Environ Res Public Health. 2022;19(6):3697. doi:10.3390/ijerph19063697.
+
+Ahn J, Harper S, Yu M, Feuer EJ, Liu B. Improved Monte Carlo
+methods for estimating confidence intervals for eleven commonly used health
+disparity measures. PLoS One. 2019 Jul 1;14(7).
 }

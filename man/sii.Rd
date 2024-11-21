@@ -8,7 +8,6 @@ sii(
   est,
   subgroup_order,
   pop = NULL,
-  scaleval = NULL,
   weight = NULL,
   psu = NULL,
   strata = NULL,
@@ -20,34 +19,29 @@ sii(
 )
 }
 \arguments{
-\item{est}{The indicator estimate.
-Estimates must be available for all subgroups/individuals
-(unless force=TRUE).}
+\item{est}{The indicator estimate. Estimates must be available for all
+subgroups/individuals (unless force=TRUE).}
 
 \item{subgroup_order}{The order of subgroups/individuals in an increasing
 sequence.}
 
-\item{pop}{The number of people within each subgroup (for disaggregated data).
-Population size must be available for all subgroups.}
+\item{pop}{For disaggregated data, the number of people within each subgroup.
+This must be available for all subgroups.}
 
-\item{scaleval}{The scale of the indicator. For example, the
-scale of an indicator measured as a percentage is 100. The
-scale of an indicator measured as a rate per 1000 population is 1000.}
+\item{weight}{The individual sampling weight, for individual-level data from
+a survey. This must be available for all individuals.}
 
-\item{weight}{Individual sampling weight (required if data come from a
-survey)}
+\item{psu}{Primary sampling unit, for individual-level data from a survey.}
 
-\item{psu}{Primary sampling unit (required if data come from a survey)}
+\item{strata}{Strata, for individual-level data from a survey.}
 
-\item{strata}{Strata (required if data come from a survey)}
-
-\item{fpc}{Finite population correction (if data come from a survey and
-sample size is large relative to population size).}
+\item{fpc}{Finite population correction, for individual-level data from a
+survey where sample size is large relative to population size.}
 
 \item{conf.level}{Confidence level of the interval. Default is 0.95 (95\%).}
 
 \item{linear}{TRUE/FALSE statement to specify the use of a linear
-regression model for SII estimation (default is logistic regression).}
+regression model (default is logistic regression).}
 
 \item{force}{TRUE/FALSE statement to force calculation with missing
 indicator estimate values.}
@@ -60,45 +54,51 @@ and confidence interval as a \code{data.frame}.
 }
 \description{
 The slope index of inequality (SII) is an absolute measure of inequality
-that represents the difference in estimated indicator values between the
-most-advantaged and most-disadvantaged, while taking into consideration the
-situation in all other subgroups/individuals – using an appropriate
-regression model. SII can be calculated using both disaggregated data and
-individual-level data. Subgroups in disaggregated data are weighted
-according to their population share, while individuals are weighted by
-sample weight in the case of data from surveys.
+that represents the difference in predicted values of an indicator between
+the most advantaged and most disadvantaged subgroups, obtained by fitting a
+regression model.
 }
 \details{
+SII can be calculated using disaggregated data and individual-level data.
+Subgroups in disaggregated data are weighted according to their population
+share, while individuals are weighted by sample weight in the case of data
+from surveys.
+
 To calculate SII, a weighted sample of the whole population is ranked from
-the most-disadvantaged subgroup (at rank 0) to the most-advantaged subgroup
+the most disadvantaged subgroup (at rank 0) to the most advantaged subgroup
 (at rank 1). This ranking is weighted, accounting for the proportional
 distribution of the population within each subgroup. The indicator of
 interest is then regressed against this relative rank using an appropriate
-regression model (e.g., a generalized linear model with logit link), and the
-predicted values of the indicator are calculated for the two extremes (rank
-1 and rank 0). The difference between the predicted values at rank 1 and
-rank 0 (covering the entire distribution) generates the SII value. For more
-information on this inequality measure see Schlotheuber, A., & Hosseinpoor,
-A. R. (2022) below.
+regression model, and the predicted values of the indicator are calculated
+for the two extremes (rank 1 and rank 0). SII is calculated as the
+difference between the predicted values at rank 1 and rank 0 (covering the
+entire distribution). For more information on this inequality measure see
+Schlotheuber (2022) below.
 
-\strong{Interpretation:} SII is zero if there is no inequality. Greater absolute
-values indicate higher levels of inequality. For favourable indicators,
-positive values indicate a concentration of the indicator among the
-advantaged, while negative values indicate a concentration of the indicator
-among the disadvantaged. For adverse indicators, it is the reverse: positive
-values indicate a concentration of the indicator among the disadvantaged,
-while negative values indicate a concentration of the indicator among the
-advantaged.
+The default regression model used is a generalized linear model with logit
+link. In logistic regression, the relationship between the indicator and the
+subgroup rank is not assumed to be linear and, due to the logit link, the
+predicted values from the regression model will be bounded between 0 and 1
+(which is ideal for indicators measured as percentages). Specify Linear=TRUE
+to use a linear regression model, which may be more appropriate for
+indicators without a 0-1 or 0-100\% scale.
+
+\strong{Interpretation:} SII is 0 if there is no inequality. Greater absolute
+values indicate higher levels of inequality. Positive values indicate that
+the level of the indicator is higher among advantaged subgroups, while
+negative values indicate that the level of the indicator is higher among
+disadvantaged subgroups. Note that this results in different interpretations
+for favourable and adverse indicators.
 
 \strong{Type of summary measure:} Complex; absolute; weighted
 
-\strong{Applicability:} Ordered; more than two subgroups
+\strong{Applicability:} Ordered dimension of inequality with more than two
+subgroups
 
-\strong{Warning:} The confidence intervals are approximate
-and might be biased.
+\strong{Warning:} The confidence intervals are approximate and might be biased.
 }
 \examples{
-# example code
+# example code 1
 data(IndividualSample)
 head(IndividualSample)
 with(IndividualSample,
@@ -106,13 +106,17 @@ with(IndividualSample,
          subgroup_order = subgroup_order,
          weight = weight,
          psu = psu,
-         strata = strata
-         )
-     )
+         strata = strata))
+# example code 2
+data(OrderedSample)
+head(OrderedSample)
+with(OrderedSample,
+     sii(est = estimate,
+         subgroup_order = subgroup_order,
+         pop = population))
 }
 \references{
-Schlotheuber, A., & Hosseinpoor, A. R. (2022).
-Summary measures of health inequality: A review of existing
-measures and their application. International journal of
-environmental research and public health, 19 (6), 3697.
+Schlotheuber, A, Hosseinpoor, AR. Summary measures of health
+inequality: A review of existing measures and their application. Int J
+Environ Res Public Health. 2022;19(6):3697. doi:10.3390/ijerph19063697.
 }

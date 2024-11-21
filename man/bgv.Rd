@@ -4,17 +4,17 @@
 \alias{bgv}
 \title{Between-group variance (BGV)}
 \usage{
-bgv(pop, est, se = NULL, conf.level = 0.95, ...)
+bgv(est, se = NULL, pop, conf.level = 0.95, ...)
 }
 \arguments{
-\item{pop}{The number of people within each subgroup.
-Population size must be available for all subgroups.}
+\item{est}{The subgroup estimate. Estimates must be available for at least
+85\% of subgroups.}
 
-\item{est}{The subgroup estimate. Estimates must be
-available at least 85\% of subgroups.}
+\item{se}{The standard error of the subgroup estimate. If this is missing,
+95\% confidence intervals cannot be calculated.}
 
-\item{se}{The standard error of the subgroup estimate.
-If this is missing, confidence intervals of BGV cannot be calculated.}
+\item{pop}{The number of people within each subgroup.Population size must be
+available for all subgroups.}
 
 \item{conf.level}{Confidence level of the interval. Default is 0.95 (95\%).}
 
@@ -25,50 +25,45 @@ The estimated BGV value, corresponding estimated standard error,
 and confidence interval as a \code{data.frame}.
 }
 \description{
-Between-Group Variance (BGV) is an absolute measure of inequality that
+Between-group variance (BGV) is an absolute measure of inequality that
 considers all population subgroups. Subgroups are weighted according to
 their population share.
 }
 \details{
 BGV is calculated as the weighted average of squared differences between
-the subgroup estimates  and the setting average. Squared differences
+the subgroup estimates and the setting average. Squared differences
 are weighted by each subgroup’s population share. For more information
-on this inequality measure see Schlotheuber, A., & Hosseinpoor, A. R.
-(2022) below.
+on this inequality measure see Schlotheuber (2022) below.
 
 \strong{Interpretation:} BGV has only positive values, with larger values
-indicating higher levels of inequality. BGV is zero if there is no
-inequality.
+indicating higher levels of inequality. BGV is 0 if there is no
+inequality. BGV is reported as the squared unit of the indicator.
 BGV is more sensitive to outlier estimates as it gives more weight to the
-estimates that are further from the setting average. It is reported as the
-squared unit of the health indicator.
+estimates that are further from the setting average.
 
 \strong{Type of summary measure:} Complex; absolute; weighted
 
-\strong{Applicability:} Non-ordered; more than two subgroups
+\strong{Applicability:} Non-ordered dimensions of inequality with more than two
+subgroups
 
-\strong{Warning:} The confidence intervals are approximate
-and might be biased. See Ahn J. et al. (2018) below for
-further information on the standard error formula.
+\strong{Warning:} The confidence intervals are approximate and might be biased.
+See Ahn (2018) below for further information on the standard error formula.
 }
 \examples{
 # example code
 data(NonorderedSample)
 head(NonorderedSample)
 with(NonorderedSample,
-     bgv(pop = population,
-          est = estimate,
-          se = se
-         )
-     )
+     bgv(est = estimate,
+         pop = population,
+         se = se))
 }
 \references{
-Schlotheuber, A., & Hosseinpoor, A. R. (2022).
-Summary measures of health inequality: A review of existing
-measures and their application. International Journal of
-Environmental Research and Public Health, 19 (6), 3697.
+Schlotheuber, A, Hosseinpoor, AR. Summary measures of health
+inequality: A review of existing measures and their application. Int J
+Environ Res Public Health. 2022;19(6):3697. doi:10.3390/ijerph19063697.
 
-Ahn J, Harper S, Yu M, Feuer EJ, Liu B, Luta G. (2018).
-Variance Estimation and Confidence Intervals for 11 Commonly Used
-Health Disparity Measures. JCO Clin Cancer Inform. Dec;2:1--19.
+Ahn J, Harper S, Yu M, Feuer EJ, Liu B, Luta G. Variance
+estimation and confidence intervals for 11 commonly used health disparity
+measures. JCO Clin Cancer Inform. 2018;2:1-19. doi:10.1200/CCI.18.00031.
 }

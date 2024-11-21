@@ -5,40 +5,45 @@
 \title{Mean difference from mean (unweighted) (MDMU)}
 \usage{
 mdmu(
-  pop = NULL,
   est,
   se = NULL,
-  scaleval,
+  pop = NULL,
+  scaleval = NULL,
   setting_average = NULL,
   sim = NULL,
   seed = 123456,
+  force = FALSE,
   ...
 )
 }
 \arguments{
-\item{pop}{The number of people within each subgroup.
-Population size must be available for all subgroups.}
+\item{est}{The subgroup estimate. Estimates must be available for at least
+85\% of subgroups.}
 
-\item{est}{The subgroup estimate.
-Estimates must be available for at least 85\% of subgroups.}
+\item{se}{The standard error of the subgroup estimate. If this is missing,
+95\% confidence intervals cannot be calculated.}
 
-\item{se}{The standard error of the subgroup estimate.
-If this is missing, 95\% confidence intervals of MDMU cannot be calculated.}
+\item{pop}{The number of people within each subgroup.Population size must be
+available for all subgroups.}
 
-\item{scaleval}{The scale of the indicator. For example, the
-scale of an indicator measured as a percentage is 100. The
-scale of an indicator measured as a rate per 1000 population is 1000.}
+\item{scaleval}{The scale of the indicator. For example, the scale of an
+indicator measured as a percentage is 100. The scale of an indicator measured
+as a rate per 1000 population is 1000. If this is missing, 95\% confidence
+intervals cannot be calculated.}
 
-\item{setting_average}{The reported setting average. Setting average must
-be unique for each setting, year, indicator combination.
-If population is not specified for all subgroups, the setting average is
-used.}
+\item{setting_average}{The overall indicator average for the setting of
+interest. Setting average must be unique for each setting, year and indicator
+combination. If population (pop) is not specified for all subgroups, the
+setting average is used for the calculation.}
 
 \item{sim}{The number of simulations to estimate 95\% confidence intervals.
 Default is 100.}
 
 \item{seed}{The random number generator (RNG) state for the 95\% confidence
 interval simulation. Default is 123456.}
+
+\item{force}{TRUE/FALSE statement to force calculation when more than 85\% of
+subgroup estimates are missing.}
 
 \item{...}{Further arguments passed to or from other methods.}
 }
@@ -47,47 +52,49 @@ The estimated MDMU value, corresponding estimated standard error,
 and confidence interval as a \code{data.frame}.
 }
 \description{
-The Mean Difference from Mean (MDM) is an absolute measure of inequality
-that shows the mean difference between each subgroup and the setting
-average. For the unweighted version (MDMU), all subgroups are weighted
-equally.
+The mean difference from mean (MDM) is an absolute measure of inequality
+that shows the mean difference between each subgroup and the mean (e.g.
+the national average).
 }
 \details{
 The unweighted version (MDMU) is calculated as the sum of the absolute
-differences between the subgroup estimates  and the setting average, divided
-by the number of subgroups. For more information on this inequality measure
-see Schlotheuber, A., & Hosseinpoor, A. R. (2022) below.
+differences between the subgroup estimates  and the mean, divided
+by the number of subgroups. All subgroups are weighted equally. For more
+information on this inequality measure see Schlotheuber (2022) below.
 
-95\% confidence intervals are calculated using a methodology of simulated
-estimates. The dataset is simulated a large number of times (e.g., 100)
-and MDMU is calculated for each of the simulated samples. The 95\%
-confidence intervals are based on the 2.5th and 97.5th percentiles of the
-MDMU results.
+95\% confidence intervals are calculated using a Monte Carlo simulation-based
+method. The dataset is simulated a large number of times (e.g. 100), with
+the mean and standard error of each simulated dataset being the same as the
+original dataset. MDMU is calculated for each of the simulated sample
+datasets. The 95\% confidence intervals are based on the 2.5th and 97.5th
+percentiles of the MDMU results. See Ahn (2019) below for further
+information.
 
 \strong{Interpretation:} MDMU only has positive values, with larger values
-indicating higher levels of inequality. MDMU is zero if there is no
-inequality.
+indicating higher levels of inequality. MDMU is 0 if there is no
+inequality. MDMU has the same unit as the indicator.
 
 \strong{Type of summary measure:} Complex; absolute; non-weighted
 
-\strong{Applicability:} Non-ordered; more than two subgroups
+\strong{Applicability:} Non-ordered dimensions of inequality with more than two
+subgroups
 }
 \examples{
 # example code
 data(NonorderedSample)
 head(NonorderedSample)
 with(NonorderedSample,
-     mdmu(pop = population,
-          est = estimate,
+     mdmu(est = estimate,
           se = se,
-          scaleval = indicator_scale,
-          setting_average
-         )
-     )
+          pop = population,
+          scaleval = indicator_scale))
 }
 \references{
-Schlotheuber, A., & Hosseinpoor, A. R. (2022).
-Summary measures of health inequality: A review of existing
-measures and their application. International Journal of
-Environmental Research and Public Health, 19 (6), 3697.
+Schlotheuber, A, Hosseinpoor, AR. Summary measures of health
+inequality: A review of existing measures and their application. Int J
+Environ Res Public Health. 2022;19(6):3697. doi:10.3390/ijerph19063697.
+
+Ahn J, Harper S, Yu M, Feuer EJ, Liu B. Improved Monte Carlo
+methods for estimating confidence intervals for eleven commonly used health
+disparity measures. PLoS One. 2019 Jul 1;14(7).
 }
