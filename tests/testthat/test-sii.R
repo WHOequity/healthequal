@@ -13,7 +13,7 @@ test_that("sii function calculates SII correctly", {
   scale <- rep(100, 5)
   fav <- rep(1, 5)
 
-  # Call the aci function
+  # Call the sii function
   result <- sii(pop = pop,
                 est = est,
                 subgroup_order = subgroup_order,

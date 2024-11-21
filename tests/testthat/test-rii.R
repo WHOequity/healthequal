@@ -13,7 +13,7 @@ test_that("rii function calculates RII correctly", {
   fav <- rep(1, 5)
   scale <- rep(100, 5)
 
-  # Call the aci function
+  # Call the rii function
   result <- rii(pop = pop,
                 est = est,
                 subgroup_order = subgroup_order)

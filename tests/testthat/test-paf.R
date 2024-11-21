@@ -13,7 +13,7 @@ test_that("paf function calculates PAF correctly", {
   fav <- rep(1, 5)
   scale <- rep(100, 5)
 
-  # Call the aci function
+  # Call the paf function
   result <- paf(pop = pop,
                 est = est,
                 subgroup_order = subgroup_order,

@@ -19,8 +19,7 @@ test_that("mdbu function calculates mdbu correctly", {
                 est = est,
                 se = se,
                 scaleval = scale,
-                favourable_indicator = fav
-                )
+                favourable_indicator = fav)
 
   # Expected values
   expected_mdbu <- 16.360001

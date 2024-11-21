@@ -13,7 +13,7 @@ test_that("parisk function calculates PAR correctly", {
   fav <- rep(1, 5)
   scale <- rep(100, 5)
 
-  # Call the aci function
+  # Call the parisk function
   result <- parisk(pop = pop,
                 est = est,
                 subgroup_order = subgroup_order,

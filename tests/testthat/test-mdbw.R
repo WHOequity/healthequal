@@ -19,8 +19,7 @@ test_that("mdbw function calculates mdbw correctly", {
                 est = est,
                 se = se,
                 scaleval = scale,
-                favourable_indicator = fav
-                )
+                favourable_indicator = fav)
 
   # Expected values
   expected_mdbw <- 16.293156

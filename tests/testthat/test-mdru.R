@@ -20,8 +20,7 @@ test_that("mdru function calculates mdru correctly", {
                 se = se,
                 scaleval = scale,
                 favourable_indicator = fav,
-                reference_subgroup = ref
-                )
+                reference_subgroup = ref)
 
   # Expected values
   expected_mdru <- 7.2399998

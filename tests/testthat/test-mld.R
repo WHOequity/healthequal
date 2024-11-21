@@ -14,7 +14,7 @@ test_that("mld function calculates MLD correctly", {
   ref <- rep(0, 25)
   ref[sample(25, 1)] <- 1
 
-  # Call the aci function
+  # Call the mld function
   result <- mld(pop = pop,
                 est = est,
                 se = se)

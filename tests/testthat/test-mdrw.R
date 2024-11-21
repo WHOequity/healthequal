@@ -20,8 +20,7 @@ test_that("mdrw function calculates mdrw correctly", {
                 se = se,
                 scaleval = scale,
                 favourable_indicator = fav,
-                reference_subgroup = ref
-                )
+                reference_subgroup = ref)
 
   # Expected values
   expected_mdrw <- 7.2228465

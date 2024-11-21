@@ -16,9 +16,9 @@ test_that("idisu function calculates IDISU correctly", {
 
   # Call the idisu function
   result <- idisu(pop = pop,
-                est = est,
-                se = se,
-                scaleval = scale)
+                  est = est,
+                  se = se,
+                  scaleval = scale)
 
   # Expected values
   expected_idisu <- 8.7018175

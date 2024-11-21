@@ -20,9 +20,7 @@ test_that("paf function calculates paf correctly", {
                 se = se,
                 scaleval = scale,
                 ordered_dimension = ordered,
-                favourable_indicator = fav,
-                reference_subgroup = ref
-                )
+                favourable_indicator = fav)
 
   # Expected values
   expected_paf <- 24.06426

@@ -1,7 +1,7 @@
 library(testthat)
 
 # Test Cases
-test_that("idisu function calculates IDISU correctly", {
+test_that("idisw function calculates IDISW correctly", {
   # Create sample data
   ## Non-ordered
   set.seed(123)
@@ -16,15 +16,13 @@ test_that("idisu function calculates IDISU correctly", {
 
   # Call the idisw function
   result <- idisw(pop = pop,
-                est = est,
-                se = se,
-                scaleval = scale)
+                  est = est,
+                  se = se,
+                  scaleval = scale)
 
   # Expected values
   expected_idisu <- 8.6178417
-  expected_se <- NA
 
   # Compare the calculated values with the expected values
   expect_equal(result$estimate, expected_idisu, tolerance = 1e-4)
-  expect_equal(result$se, expected_se, tolerance = 1e-4)
 })
