@@ -1,66 +1,68 @@
-#' Slope index of inequality (SII)
+#'  Slope index of inequality (SII)
 #'
 #'  The slope index of inequality (SII) is an absolute measure of inequality
-#'  that represents the difference in estimated indicator values between the
-#'  most-advantaged and most-disadvantaged, while taking into consideration the
-#'  situation in all other subgroups/individuals – using an appropriate
-#'  regression model. SII can be calculated using both disaggregated data and
-#'  individual-level data. Subgroups in disaggregated data are weighted
-#'  according to their population share, while individuals are weighted by
-#'  sample weight in the case of data from surveys.
+#'  that represents the difference in predicted values of an indicator between
+#'  the most advantaged and most disadvantaged subgroups, obtained by fitting a
+#'  regression model.
+#'
+#'  SII can be calculated using disaggregated data and individual-level data.
+#'  Subgroups in disaggregated data are weighted according to their population
+#'  share, while individuals are weighted by sample weight in the case of data
+#'  from surveys.
 #'
 #'  To calculate SII, a weighted sample of the whole population is ranked from
-#'  the most-disadvantaged subgroup (at rank 0) to the most-advantaged subgroup
+#'  the most disadvantaged subgroup (at rank 0) to the most advantaged subgroup
 #'  (at rank 1). This ranking is weighted, accounting for the proportional
 #'  distribution of the population within each subgroup. The indicator of
 #'  interest is then regressed against this relative rank using an appropriate
-#'  regression model (e.g., a generalized linear model with logit link), and the
-#'  predicted values of the indicator are calculated for the two extremes (rank
-#'  1 and rank 0). The difference between the predicted values at rank 1 and
-#'  rank 0 (covering the entire distribution) generates the SII value. For more
-#'  information on this inequality measure see Schlotheuber, A., & Hosseinpoor,
-#'   A. R. (2022) below.
+#'  regression model, and the predicted values of the indicator are calculated
+#'  for the two extremes (rank 1 and rank 0). SII is calculated as the
+#'  difference between the predicted values at rank 1 and rank 0 (covering the
+#'  entire distribution). For more information on this inequality measure see
+#'  Schlotheuber (2022) below.
 #'
-#'  **Interpretation:** SII is zero if there is no inequality. Greater absolute
-#'  values indicate higher levels of inequality. For favourable indicators,
-#'  positive values indicate a concentration of the indicator among the
-#'  advantaged, while negative values indicate a concentration of the indicator
-#'  among the disadvantaged. For adverse indicators, it is the reverse: positive
-#'  values indicate a concentration of the indicator among the disadvantaged,
-#'  while negative values indicate a concentration of the indicator among the
-#'  advantaged.
+#'  The default regression model used is a generalized linear model with logit
+#'  link. In logistic regression, the relationship between the indicator and the
+#'  subgroup rank is not assumed to be linear and, due to the logit link, the
+#'  predicted values from the regression model will be bounded between 0 and 1
+#'  (which is ideal for indicators measured as percentages). Specify Linear=TRUE
+#'  to use a linear regression model, which may be more appropriate for
+#'  indicators without a 0-1 or 0-100% scale.
+#'
+#'  **Interpretation:** SII is 0 if there is no inequality. Greater absolute
+#'  values indicate higher levels of inequality. Positive values indicate that
+#'  the level of the indicator is higher among advantaged subgroups, while
+#'  negative values indicate that the level of the indicator is higher among
+#'  disadvantaged subgroups. Note that this results in different interpretations
+#'  for favourable and adverse indicators.
 #'
 #'  **Type of summary measure:** Complex; absolute; weighted
 #'
-#'  **Applicability:** Ordered; more than two subgroups
+#'  **Applicability:** Ordered dimension of inequality with more than two
+#'  subgroups
 #'
-#'  **Warning:** The confidence intervals are approximate
-#'  and might be biased.
+#'  **Warning:** The confidence intervals are approximate and might be biased.
 #'
-#' @param est The indicator estimate.
-#'  Estimates must be available for all subgroups/individuals
-#'  (unless force=TRUE).
+#' @param est The indicator estimate. Estimates must be available for all
+#' subgroups/individuals (unless force=TRUE).
 #' @param subgroup_order The order of subgroups/individuals in an increasing
 #' sequence.
-#' @param pop The number of people within each subgroup (for disaggregated data).
-#'  Population size must be available for all subgroups.
-#' @param scaleval The scale of the indicator. For example, the
-#'  scale of an indicator measured as a percentage is 100. The
-#'  scale of an indicator measured as a rate per 1000 population is 1000.
-#' @param weight Individual sampling weight (required if data come from a
-#' survey)
-#' @param psu Primary sampling unit (required if data come from a survey)
-#' @param strata Strata (required if data come from a survey)
-#' @param fpc Finite population correction (if data come from a survey and
-#' sample size is large relative to population size).
+#' @param pop For disaggregated data, the number of people within each subgroup.
+#' This must be available for all subgroups.
+#' @param weight The individual sampling weight, for individual-level data from
+#' a survey. This must be available for all individuals.
+#' @param psu Primary sampling unit, for individual-level data from a survey.
+#' @param strata Strata, for individual-level data from a survey.
+#' @param fpc Finite population correction, for individual-level data from a
+#' survey where sample size is large relative to population size.
 #' @param conf.level Confidence level of the interval. Default is 0.95 (95%).
 #' @param linear TRUE/FALSE statement to specify the use of a linear
-#' regression model for SII estimation (default is logistic regression).
+#' regression model (default is logistic regression).
 #' @param force TRUE/FALSE statement to force calculation with missing
 #' indicator estimate values.
-#' @param ...  Further arguments passed to or from other methods.
+#' @param ... Further arguments passed to or from other methods.
 #' @examples
-#' # example code
+#' # example code 1
 #' data(IndividualSample)
 #' head(IndividualSample)
 #' with(IndividualSample,
@@ -68,17 +70,21 @@
 #'          subgroup_order = subgroup_order,
 #'          weight = weight,
 #'          psu = psu,
-#'          strata = strata
-#'          )
-#'      )
-#' @references Schlotheuber, A., & Hosseinpoor, A. R. (2022).
-#' Summary measures of health inequality: A review of existing
-#'  measures and their application. International journal of
-#'  environmental research and public health, 19 (6), 3697.
+#'          strata = strata))
+#' # example code 2
+#' data(OrderedSample)
+#' head(OrderedSample)
+#' with(OrderedSample,
+#'      sii(est = estimate,
+#'          subgroup_order = subgroup_order,
+#'          pop = population))
+#' @references Schlotheuber, A, Hosseinpoor, AR. Summary measures of health
+#' inequality: A review of existing measures and their application. Int J
+#' Environ Res Public Health. 2022;19(6):3697. doi:10.3390/ijerph19063697.
 #' @return The estimated SII value, corresponding estimated standard error,
-#'  and confidence interval as a `data.frame`.
+#' and confidence interval as a `data.frame`.
 #' @importFrom stats binomial gaussian glm predict qnorm quantile rnorm vcov
-#'  quasibinomial
+#' quasibinomial
 #' @importFrom utils data
 #' @importFrom srvyr as_survey
 #' @importFrom survey svyglm svymean svyvar svydesign
@@ -90,54 +96,71 @@
 #' @rdname sii
 #'
 sii <- function(est,
-                    subgroup_order,
-                    pop = NULL,
-                    scaleval = NULL,
-                    weight = NULL,
-                    psu = NULL,
-                    strata = NULL,
-                    fpc = NULL,
-                    conf.level = 0.95,
-                    linear = FALSE,
-                    force = FALSE, ...) {
+                subgroup_order,
+                pop = NULL,
+                weight = NULL,
+                psu = NULL,
+                strata = NULL,
+                fpc = NULL,
+                conf.level = 0.95,
+                linear = FALSE,
+                force = FALSE,
+                ...) {
 
   # Variable checks
   ## Stop
-  if(!force){
-    if(anyNA(est))  stop('Estimates are missing in some subgroups')
+  if (!force) {
+    if (anyNA(est))
+      stop('Estimates are missing in some subgroups.
+           Specify force=TRUE to allow missing values.')
   } else {
-      pop <- pop[!is.na(est)]
-      subgroup_order <- subgroup_order[!is.na(est)]
-      if(!is.null(psu)) psu <- psu[!is.na(est)]
-      if(!is.null(strata)) strata <- strata[!is.na(est)]
-      if(!is.null(weight)) weight <- weight[!is.na(est)]
-      if(!is.null(fpc)) fpc <- fpc[!is.na(est)]
-      if(!is.null(scaleval)) scaleval <- scaleval[!is.na(est)]
-      est <- est[!is.na(est)]
+    pop <- pop[!is.na(est)]
+    subgroup_order <- subgroup_order[!is.na(est)]
+    if (!is.null(psu))
+      psu <- psu[!is.na(est)]
+    if (!is.null(strata))
+      strata <- strata[!is.na(est)]
+    if (!is.null(weight))
+      weight <- weight[!is.na(est)]
+    if (!is.null(fpc))
+      fpc <- fpc[!is.na(est)]
+    est <- est[!is.na(est)]
   }
-  if(length(unique(est)) == 1)
-    stop("SII not calculated - all estimates have the same value.")
-  if(!is.null(pop)) {
-    if(anyNA(pop)){
+  if (length(unique(est)) == 1) {
+    stop('All estimates have the same value; SII not calculated')
+  }
+  if (length(est) <= 2) {
+    stop('Estimates must be available for more than two subgroups')
+  }
+  if (!is.null(est)) {
+    if (!is.numeric(est))
+      stop('Estimates need to be numeric')
+  }
+  if (!is.null(pop)) {
+    if (anyNA(pop)) {
       stop('Population is missing in some subgroups')
     }
-    if(!is.numeric(pop)){
-      stop('Population needs to be numeric')
+    if (!is.numeric(pop)) {
+      stop('Population variable needs to be numeric')
     }
-    if(all(pop == 0)){
-      stop('The population is of size 0 in all cells')
+    if (all(pop == 0)) {
+      stop('Population variable is of size 0 in all subgroups')
     }
   }
-  if(is.null(subgroup_order)){
-    stop('Subgroup order needs to be declared')
+  if (is.null(subgroup_order)) {
+    stop('Subgroup order variable needs to be declared')
   }
-  if(!is.null(weight) & !is.numeric(weight)){
-    stop('Weights needs to be numeric')
+  sorted_order <- sort(subgroup_order)
+  if (any(diff(sorted_order) != 1) || any(sorted_order %% 1 != 0)) {
+    stop('Subgroup order variable must contain integers in increasing order')
   }
-
-  #Warning
+  if (!is.null(weight) & !is.numeric(weight)) {
+    stop('Weight variable needs to be numeric')
+  }
+  ## Warning
   if(is.null(pop) & is.null(weight)) {
-    message("Data not aggregated nor weighted")
+    message('Neither a population variable nor a weight variable has been
+            declared')
   }
 
   # Options
@@ -146,56 +169,52 @@ sii <- function(est,
 
   # Calculate summary measure
 
-  # Assign scale
-  if(!is.null(scaleval)){
-    scale <- max(scaleval)
-  } else {
-    scale <- ifelse(est <= 1, 1,
-                    ifelse(est > 1 & est <= 100, 100,
-                           ifelse(est > 100 & est <= 1000, 1000,
-                                  ifelse(est > 1000 & est <= 10000, 10000,
-                                         ifelse(est > 10000 & est <= 100000,
-                                                100000,
-                                                1000000
-                                         )
-                                  )
-                           )
-                    ))
-    scale<-max(scale)
-  }
+  ## Assign scale
+  scale <- ifelse(est <= 1, 1,
+                  ifelse(est > 1 & est <= 100, 100,
+                         ifelse(est > 100 & est <= 1000, 1000,
+                                ifelse(est > 1000 & est <= 10000, 10000,
+                                       ifelse(est > 10000 & est <= 100000,
+                                              100000,
+                                              1000000)))))
+  scale<-max(scale)
 
-  # Create pop if NULL
+  ## Create pop if NULL
   y <- NULL
   ny <- NULL
-  if(is.null(pop) & is.null(weight)){
+  if (is.null(pop) & is.null(weight)) {
     pop <- rep(1, length(est))
   }
-  if(is.null(pop) & !is.null(weight)){
+  if (is.null(pop) & !is.null(weight)) {
     pop <- weight
   } else {
     pop <- ceiling(pop)
-    y <- round((est/scale) * pop)
+    y <- round((est / scale) * pop)
     ny <- pop - y
-
-    if(any(ny < 0 | y > pop | y < 0))
+    if (any(ny < 0 | y > pop | y < 0))
       return(data.frame(measure = "sii",
-                    estimate = NA,
-                    se = NA,
-                    lowerci = NA,
-                    upperci = NA))
-
+                        estimate = NA,
+                        se = NA,
+                        lowerci = NA,
+                        upperci = NA))
   }
 
-  # Rank subgroups from the most-disadvantaged to the most-advantaged
+  ## Rank subgroups from the most disadvantaged to the most advantaged
   reorder <- order(subgroup_order)
   pop <- pop[reorder]
   subgroup_order <- subgroup_order[reorder]
-  if(!is.null(weight)) weight <- weight[reorder]
-  if(!is.null(strata)) strata <- strata[reorder]
-  if(!is.null(psu)) psu <- psu[reorder]
-  if(!is.null(fpc)) fpc <- fpc[reorder]
-  if(!is.null(y)) y <- y[reorder]
-  if(!is.null(ny)) ny <- ny[reorder]
+  if (!is.null(weight))
+    weight <- weight[reorder]
+  if (!is.null(strata))
+    strata <- strata[reorder]
+  if (!is.null(psu))
+    psu <- psu[reorder]
+  if (!is.null(fpc))
+    fpc <- fpc[reorder]
+  if (!is.null(y))
+    y <- y[reorder]
+  if (!is.null(ny))
+    ny <- ny[reorder]
 
   est <- est[reorder]
   est_sc <- est / scale
@@ -216,63 +235,67 @@ sii <- function(est,
                                     y,
                                     ny))
 
-  newdat_sii <- newdat_sii %>% group_by(subgroup_order) %>%
-              mutate(cumwr = max(.data$cumw, na.rm = TRUE),
-                     cumwr1 = min(.data$cumw1, na.rm = TRUE)) %>%
-              ungroup() %>%
-              mutate(rank = (.data$cumwr1 + 0.5*
-                               (.data$cumwr-.data$cumwr1)) / .data$sumw)
   newdat_sii <- newdat_sii %>%
-              select(est_sc, rank,
-                            pop,
-                            weight,
-                            psu,
-                            strata,
-                            fpc,
-                            y,
-                            ny)
+    group_by(subgroup_order) %>%
+    mutate(cumwr = max(.data$cumw, na.rm = TRUE),
+           cumwr1 = min(.data$cumw1, na.rm = TRUE)) %>%
+    ungroup() %>%
+    mutate(rank = (.data$cumwr1 + 0.5 *
+                     (.data$cumwr - .data$cumwr1)) / .data$sumw) %>%
+    select(est_sc,
+           rank,
+           pop,
+           weight,
+           psu,
+           strata,
+           fpc,
+           y,
+           ny)
 
-  # Calculate SII
-  if(is.null(weight)){ #For non survey
-    if(!linear){
+  ## Calculate SII
+  if (is.null(weight)) {
+    ### For non-survey data
+    if (!linear) {
       mod <- glm(formula = cbind(y, ny) ~ rank,
-                weights = pop,
-                data = newdat_sii,
-                family = binomial("logit"))
+                 weights = pop,
+                 data = newdat_sii,
+                 family = binomial("logit"))
     } else {
       mod <- glm(est_sc ~ rank,
-                data = newdat_sii,
-                family = gaussian,
-                weights = pop)
+                 data = newdat_sii,
+                 family = gaussian,
+                 weights = pop)
     }
 
-    siie <- marginaleffects::avg_comparisons(mod, comparison="difference",
-                                             variables = list(rank = c(0,1)),
+    siie <- marginaleffects::avg_comparisons(mod,
+                                             comparison = "difference",
+                                             variables = list(rank = c(0, 1)),
                                              vcov = "HC1")
 
     sii <- siie$estimate
 
-    # Calculate 95% confidence intervals
+    ### Calculate 95% confidence intervals
     se.formula <- siie$std.error
-    cilevel <- 1-((1-conf.level)/2)
+    cilevel <- 1 - ((1 - conf.level) / 2)
     lowerci <- sii - se.formula * qnorm(cilevel)
     upperci <- sii + se.formula * qnorm(cilevel)
 
-  } else{ #For survey
-    tids <- if(is.null(psu)) {
-             ~1
-            } else {
-              ~psu
-            }
-    tstrata <- if(is.null(strata)) {
-      NULL
+  } else {
+    ### For individual-level survey data
+    tids <- if (is.null(psu)) {
+      ~ 1
     } else {
-      ~strata
+      ~ psu
     }
-    tfpc <- if(is.null(fpc)) {
+    tstrata <- if (is.null(strata)) {
       NULL
     } else {
-      ~fpc
+      ~ strata
+    }
+    tfpc <- if (is.null(fpc)) {
+      NULL
+    } else {
+      ~ fpc
     }
 
     newdat_sii_s <- svydesign(ids = tids,
@@ -281,25 +304,25 @@ sii <- function(est,
                                weights = ~weight,
                                fpc = tfpc,
                                data = newdat_sii)
-    if(!linear){
+    if (!linear) {
       mod <- svyglm(est_sc ~ rank,
                     design = newdat_sii_s,
                     family = quasibinomial(link="logit"))
-    } else{
+    } else {
       mod <- svyglm(est_sc ~ rank,
                     design = newdat_sii_s,
                     family = gaussian)
     }
 
     siie_emmeans <- contrast(regrid(emmeans(mod, specs =  ~ rank,
-                                             at = list(rank = c(1, 0)))),
-                              method = "pairwise")
+                                            at = list(rank = c(1, 0)))),
+                             method = "pairwise")
     siie_sum <- summary(siie_emmeans)
     sii <- siie_sum$estimate
 
-    # Calculate 95% confidence intervals
+    ### Calculate 95% confidence intervals
     se.formula <- siie_sum$SE
-    cilevel <- 1-((1-conf.level)/2)
+    cilevel <- 1 - ((1 - conf.level) / 2)
     lowerci <- sii - se.formula * qnorm(cilevel)
     upperci <- sii + se.formula * qnorm(cilevel)
   }
@@ -309,7 +332,5 @@ sii <- function(est,
                     estimate = sii * scale,
                     se = se.formula,
                     lowerci = lowerci * scale,
-                    upperci = upperci * scale)
-  )
+                    upperci = upperci * scale))
 }
-
