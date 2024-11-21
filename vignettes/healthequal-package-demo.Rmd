@@ -23,8 +23,7 @@ knitr::opts_chunk$set(echo = TRUE,
                       comment = "",
                       collapse = FALSE,
                       class.source = "bg-success",
-                      class.output = "bg-warning"
-                      )
+                      class.output = "bg-warning")
 ```
 
 # Motivation
@@ -145,9 +144,7 @@ The `OrderedSample` dataset can be used to calculate ACI. Two arguments are requ
 with(OrderedSample,
      aci(est = estimate,
          subgroup_order = subgroup_order,
-         pop = population
-         )
-     )
+         pop = population))
 ```
 
 ## Calculate the slope index of inequality (SII)
@@ -168,9 +165,7 @@ with(IndividualSample,
          subgroup_order = subgroup_order,
          weight = weight,
          psu = psu,
-         strata = strata
-          )
-     )
+         strata = strata))
 ```
 
 ## Calculate between-group variance (BGV)
@@ -181,11 +176,9 @@ The `NonorderedSample` dataset can be used to calculate BGV, which requires two 
 
 ```{r}
 with(NonorderedSample,
-     bgv(pop = population,
-         est = estimate,
-         se = se
-         )
-     )
+     bgv(est = estimate,
+         se = se, 
+         pop = population))
 ```
 
 ## Calculate multiple measures of inequality for a dataset with multiple indicators
@@ -208,14 +201,12 @@ The Coefficient of Variation (COV) is a summary measure of health inequality tha
 library(dplyr)
 measures <- NonorderedSampleMultipleind %>%
   dplyr::group_by(indicator) %>%
-  dplyr::summarize(covar(pop = population,
-                   est = estimate,
-                   scaleval = indicator_scale
-                   )
-  )
+  dplyr::summarize(covar(est = estimate,
+                         se = se, 
+                         pop = population,
+                         scaleval = indicator_scale))
 
-measures  
-
+as.data.frame(measures) 
 ```
 
 The `NonorderedSampleMultipleind` dataset can also be used to calculate two or more different summary measures (in the example below COV and BGV) for multiple dimensions.
@@ -225,19 +216,17 @@ multiplemeasures <- NonorderedSampleMultipleind %>%
   dplyr::group_by(indicator,
                   dimension) %>%
   dplyr::summarize(
-    covar = covar(pop = population,
-                        est = estimate,
-                        scaleval = indicator_scale),
-    bgv = bgv(pop = population,
-                    est = estimate,
-                    se = se   
-                    )
-            ) 
+    covar = covar(est = estimate,
+                  se = se, 
+                  pop = population,
+                  scaleval = indicator_scale),
+    bgv = bgv(est = estimate,
+              se = se, 
+              pop = population)) 
 
-# It is possible to extract the measures separetly
+# It is possible to extract the measures separately
 multiplemeasures$covar
 multiplemeasures$bgv
-
 ```
 
 # Further References
