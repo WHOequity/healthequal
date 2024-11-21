@@ -154,7 +154,8 @@ rii <- function(est,
     stop('Subgroup order variable needs to be declared')
   }
   sorted_order <- sort(subgroup_order)
-  if (any(diff(sorted_order) != 1) || any(sorted_order %% 1 != 0)) {
+  if (!is.null(pop) &
+      (any(diff(sorted_order) != 1) || any(sorted_order %% 1 != 0))) {
     stop('Subgroup order variable must contain integers in increasing order')
   }
   if (!is.null(weight) & !is.numeric(weight)) {
