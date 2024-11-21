@@ -107,21 +107,21 @@ idisu <- function(est,
   if(is.null(pop) & is.null(setting_average)){
     stop('Specify either the population or the setting average variable')
   }
-  if(!is.null(pop)){
-    if(anyNA(pop)){
+  if (!is.null(pop)) {
+    if (anyNA(pop)) {
       stop('Population is missing in some subgroups')
     }
-    if(!is.numeric(pop)){
+    if (!is.numeric(pop)) {
       stop('Population variable needs to be numeric')
     }
-    if(all(pop == 0)){
+    if (all(pop == 0)) {
       stop('Population variable is of size 0 in all subgroups')
     }
   } else {
-    if(!is.null(setting_average) & !is.numeric(setting_average)){
+    if (!is.null(setting_average) & !is.numeric(setting_average)) {
       stop('Setting average needs to be numeric')
     }
-    if(!is.null(setting_average) & length(unique(setting_average))!=1){
+    if (!is.null(setting_average) & length(unique(setting_average)) != 1) {
       stop('Setting average not unique across subgroups')
     }
   }
@@ -175,26 +175,26 @@ idisu <- function(est,
       simulated_data <- input_data %>%
         rowwise() %>%
         mutate(simulation = {
-                   result <- if (scaleval != 100) {
-                     repeat {
-                       result <- rnorm(1,
-                                       mean = est,
-                                       sd = se)
-                       if (result > 0)
-                         break
-                     }
-                     result
-                   } else {
-                     repeat {
-                       result <- rnorm(1,
-                                       mean = est,
-                                       sd = se)
-                       if (result >= 0 & result <= 100)
-                         break
-                     }
-                     result
-                   }
-                 }) %>%
+          result <- if (scaleval != 100) {
+            repeat {
+              result <- rnorm(1,
+                              mean = est,
+                              sd = se)
+              if (result >= 0)
+                break
+            }
+            result
+          } else {
+            repeat {
+              result <- rnorm(1,
+                              mean = est,
+                              sd = se)
+              if (result >= 0 & result <= 100)
+                break
+            }
+            result
+          }
+        }) %>%
         ungroup()
 
       ## Calculate weighted mean or use setting average
@@ -212,11 +212,12 @@ idisu <- function(est,
 
     boot.lcl  <- quantile(idisu_sim,
                           probs = c(0.025),
-                          na.rm = TRUE)
+                          na.rm = TRUE,
+                          names = FALSE)
     boot.ucl <- quantile(idisu_sim,
                          probs = c(0.975),
-                         na.rm = TRUE)
-
+                         na.rm = TRUE,
+                         names = FALSE)
   }
 
   # Return data frame

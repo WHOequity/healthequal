@@ -170,7 +170,7 @@ mdrw <- function(est,
               result <- rnorm(1,
                               mean = est,
                               sd = se)
-              if (result > 0)
+              if (result >= 0)
                 break
             }
             result
@@ -199,10 +199,12 @@ mdrw <- function(est,
 
     boot.lcl <- quantile(mdrw_sim,
                          probs = c(0.025),
-                         na.rm = TRUE)
+                         na.rm = TRUE,
+                         names = FALSE)
     boot.ucl <- quantile(mdrw_sim,
                          probs = c(0.975),
-                         na.rm = TRUE)
+                         na.rm = TRUE,
+                         names = FALSE)
   }
 
   # Return data frame

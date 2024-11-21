@@ -118,35 +118,35 @@ parisk <- function(est,
   if (length(est) <= 2) {
     stop('Estimates must be available for more than two subgroups')
   }
-  if(is.null(pop) & is.null(setting_average)){
+  if (is.null(pop) & is.null(setting_average)) {
     stop('Specify either the population or the setting average variable')
   }
-  if(!is.null(pop)){
-    if(anyNA(pop)){
+  if (!is.null(pop)) {
+    if (anyNA(pop)) {
       stop('Population is missing in some subgroups')
     }
-    if(!is.numeric(pop)){
+    if (!is.numeric(pop)) {
       stop('Population variable needs to be numeric')
     }
-    if(all(pop == 0)){
+    if (all(pop == 0)) {
       stop('Population variable is of size 0 in all subgroups')
     }
   } else {
-    if(!is.null(setting_average) & !is.numeric(setting_average)){
+    if (!is.null(setting_average) & !is.numeric(setting_average)) {
       stop('Setting average needs to be numeric')
     }
-    if(!is.null(setting_average) & length(unique(setting_average))!=1){
+    if (!is.null(setting_average) & length(unique(setting_average)) != 1) {
       stop('Setting average not unique across subgroups')
     }
   }
-  if (!all(favourable_indicator %in% c(0,1))) {
+  if (!all(favourable_indicator %in% c(0, 1))) {
     stop('Favourable indicator variable must contain 0 or 1')
   }
   if (length(unique(favourable_indicator)) != 1) {
     stop('Favourable indicator variable must be consistent across subgroups,
          for the same indicator')
   }
-  if (!all(ordered_dimension %in% c(0,1))) {
+  if (!all(ordered_dimension %in% c(0, 1))) {
     stop('Ordered dimension variable must contain 0 or 1')
   }
   if (length(unique(ordered_dimension)) != 1) {
@@ -191,11 +191,11 @@ parisk <- function(est,
   }
 
   ref_estimate <- max(ifelse(refgroup == 1, est, NA), na.rm = TRUE)
-  parisk <- ifelse(ref_estimate - weighted_mean < 0 &
-                     favourable_indicator[1] == 1 |
-                     ref_estimate - weighted_mean > 0 &
-                     favourable_indicator[1] == 0,
-                   parisk == 0,
+  parisk <- ifelse((ref_estimate - weighted_mean < 0 &
+                      favourable_indicator[1] == 1) |
+                     (ref_estimate - weighted_mean > 0 &
+                        favourable_indicator[1] == 0),
+                   0,
                    ref_estimate - weighted_mean)
 
   # Calculate 95% confidence intervals

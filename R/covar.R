@@ -155,26 +155,26 @@ covar <- function(est,
       simulated_data <- input_data %>%
         rowwise() %>%
         mutate(simulation = {
-                   result <- if (scaleval != 100) {
-                     repeat {
-                       result <- rnorm(1,
-                                       mean = est,
-                                       sd = se)
-                       if (result > 0)
-                         break
-                     }
-                     result
-                   } else {
-                     repeat {
-                       result <- rnorm(1,
-                                       mean = est,
-                                       sd = se)
-                       if (result >= 0 & result <= 100)
-                         break
-                     }
-                     result
-                   }
-                 }) %>%
+          result <- if (scaleval != 100) {
+            repeat {
+              result <- rnorm(1,
+                              mean = est,
+                              sd = se)
+              if (result >= 0)
+                break
+            }
+            result
+          } else {
+            repeat {
+              result <- rnorm(1,
+                              mean = est,
+                              sd = se)
+              if (result >= 0 & result <= 100)
+                break
+            }
+            result
+          }
+        }) %>%
         ungroup()
 
       ## Calculate weighted mean
@@ -190,11 +190,12 @@ covar <- function(est,
 
     boot.lcl  <- quantile(covar_sim,
                           probs = c(0.025),
-                          na.rm = TRUE)
+                          na.rm = TRUE,
+                          names = FALSE)
     boot.ucl <- quantile(covar_sim,
                          probs = c(0.975),
-                         na.rm = TRUE)
-
+                         na.rm = TRUE,
+                         names = FALSE)
   }
 
   # Return data frame

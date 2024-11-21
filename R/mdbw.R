@@ -173,26 +173,26 @@ mdbw <- function(est,
       simulated_data <- input_data %>%
         rowwise() %>%
         mutate(simulation = {
-                   result <- if (scaleval != 100) {
-                     repeat {
-                       result <- rnorm(1,
-                                       mean = est,
-                                       sd = se)
-                       if (result > 0)
-                         break
-                     }
-                     result
-                   } else {
-                     repeat {
-                       result <- rnorm(1,
-                                       mean = est,
-                                       sd = se)
-                       if (result >= 0 & result <= 100)
-                         break
-                     }
-                     result
-                   }
-                 }) %>%
+          result <- if (scaleval != 100) {
+            repeat {
+              result <- rnorm(1,
+                              mean = est,
+                              sd = se)
+              if (result >= 0)
+                break
+            }
+            result
+          } else {
+            repeat {
+              result <- rnorm(1,
+                              mean = est,
+                              sd = se)
+              if (result >= 0 & result <= 100)
+                break
+            }
+            result
+          }
+        }) %>%
         ungroup()
 
       simulated_data <- simulated_data %>%
@@ -209,10 +209,12 @@ mdbw <- function(est,
 
     boot.lcl <- quantile(mdbw_sim,
                          probs = c(0.025),
-                         na.rm = TRUE)
+                         na.rm = TRUE,
+                         names = FALSE)
     boot.ucl <- quantile(mdbw_sim,
                          probs = c(0.975),
-                         na.rm = TRUE)
+                         na.rm = TRUE,
+                         names = FALSE)
   }
 
   # Return data frame
