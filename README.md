@@ -31,7 +31,7 @@ The development version can be installed from
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("WHO/healthequal")
+remotes::install_github("WHOequity/healthequal")
 ```
 
 ## Measures of health inequality included in `healthequal`:
@@ -130,7 +130,6 @@ will display the corresponding dataset help file:
 
 # References:
 
-Schlotheuber, A., & Hosseinpoor, A. R. (2022). Summary measures of
-health inequality: A review of existing measures and their application.
-International Journal of Environmental Research and Public Health, 19
-(6), 3697.
+Schlotheuber, A, Hosseinpoor, AR. Summary measures of health inequality: 
+A review of existing measures and their application. Int J Environ Res Public 
+Health. 2022;19(6):3697. [doi:10.3390/ijerph19063697](https://doi.org/10.3390/ijerph19063697)
