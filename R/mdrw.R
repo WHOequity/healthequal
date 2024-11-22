@@ -113,8 +113,8 @@ mdrw <- function(est,
   if (all(pop == 0)) {
     stop('Population variable is of size 0 in all subgroups')
   }
-  if (sum(reference_subgroup) !=1 ) {
-    stop('Reference subgroup variable is missing')
+  if (sum(reference_subgroup) < 1 ) {
+    stop('Reference subgroup is missing')
   }
   if (sum(reference_subgroup) > 1) {
     stop('Reference subgroup variable must identify one reference subgroup

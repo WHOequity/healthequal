@@ -99,8 +99,8 @@ mdru <- function(est,
     if (!is.numeric(se))
       stop('Standard errors need to be numeric')
   }
-  if (sum(reference_subgroup) !=1 ) {
-    stop('Reference subgroup variable is missing')
+  if (sum(reference_subgroup) < 1 ) {
+    stop('Reference subgroup is missing')
   }
   if (sum(reference_subgroup) > 1) {
     stop('Reference subgroup variable must identify one reference subgroup
